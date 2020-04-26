@@ -1,0 +1,69 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/nicolo/Documents/org/" . "Agenda/")
+ ("/home/nicolo/Documents/" . "org/")
+ ("/home/" . "nicolo/")
+ ("/home/nicolo/.config/" . "polybar/")
+ ("/home/nicolo/" . "Desktop/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/nicolo/.emacs.d/"
+ "/home/nicolo/Desktop/"
+ "/home/nicolo/Documents/org/Agenda/"
+ "/home/nicolo/"
+ "/home/nicolo/.config/polybar/"
+ "/home/nicolo/.config/i3/"
+ "/home/nicolo/.config/xsettingsd/"
+ "/home/nicolo/scripts/"
+ "/home/nicolo/.config/gtk-3.0/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "myinit.org"
+ "assegnazione-posti.cpp"
+ "agenda.org"
+ ".Xresources"
+ "config"
+ "polybar.sh"
+ "xsettingsd.conf"
+ "rofi.sh"
+ "marco-polo.txt"
+ "settings.ini"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/nicolo/.emacs.d/" (24229 33970 346750 954000) "../" "myinit.org" "auto-save-list/" "myinit.el" "init.el" "myinit.org~" "ido.last~" "ido.last" "./")
+
+ ("/home/nicolo/" (24229 34056 226747 843000) ".moc/" ".config/" ".mplayer/" "../" ".bashrc~" ".cargo/" ".bashrc" ".bash_profile" ".kde4/" ".wget-hsts" ".cache/" ".emacs.d/" "Downloads/" ".zcompdump-galileo-5.8" ".mozilla/" ".openoffice/" ".zshrc" "scripts/" ".bash_history" ".Xresources" ".Xresources~" "images/" "Documents/" ".pki/" ".zsh_history" ".gtkrc-2.0~" ".zcompdump" "music/" ".zshrc.pre-oh-my-zsh" ".shell.pre-oh-my-zsh" ".gnupg/" ".viminfo" ".fehbg" ".fonts/" ".Xauthority" ".oh-my-zsh/" ".local/" "polybar-themes/" ".screenlayout/" "./" ".bash_logout" ".histfile" "Desktop/" ".gtkrc-2.0" ".icons/" ".viminfo.tmp")
+
+ ("/home/nicolo/Desktop/" (24229 33689 723427 987000) "../" "assegnazione-posti.cpp~" "assegnazione-posti.cpp" ".directory" "marco-polo.txt" "./")
+
+ ("/home/nicolo/Documents/org/Agenda/" (24229 33261 50110 458000) "../" "agenda.org" "agenda.org~" "./")
+
+ ("/home/nicolo/.config/i3/" (24226 59061 956203 888000) "i3blocks.conf" "../" "config" "arc-theme/" "i3blocks.conf~" "config~" "./")
+
+ ("/home/nicolo/.config/polybar/" (24226 59154 349533 801000) "../" "config" "polybar.sh~" "config.ini" "scripts/" "fonts/" "#config#" "polybar.sh" "config~" "launch.sh" "./")
+
+ ("/home/nicolo/Documents/org/" (24229 32740 763462 854000) "../" "Agenda/" "./")
+
+ ("/home/nicolo/Documents/" (24229 32735 973463 15000) "../" "org/" "./")
+
+ ("/home/nicolo/.config/" (24226 56959 506281 466000) "powerdevilrc" "kdeglobals" "bluedevilglobalrc" "gpicview/" "plasma-localerc" "dolphinrc" "../" "gwenviewrc" "kglobalshortcutsrc" "pulse/" "rofi/" "korgacrc" "kwinrc" "gtk-2.0/" "gtkrc-2.0" "powermanagementprofilesrc" "plasmashellrc" "yay/" "xsettingsd/" "pavucontrol.ini" "kmail2rc" "kmixctrlrc" "vlc/" "kconf_updaterc" "kded5rc" ".i3status/" "auroraerc" "akregatorrc" "session/" "kwalletrc" "arkrc" "autostart-scripts/" "fontconfig/" "xfce4/" "akonadi/" "KDE/" "emaildefaults" "webengineurlinterceptoradblockrc" "kalarmrc" "gtkrc" "yakuakerc" "ksysguardrc" "neofetch/" "kateschemarc" "drkonqirc" "ranger/" "kde.org/" "plasma-nm" "dconf/" "kcminputrc" "kactivitymanagerd-statsrc" "ksmserverrc" "htop/" "i3/" "libaccounts-glib/" "GIMP/" "konsolerc" "kscreenlockerrc" "kcmfonts" "plasma-org.kde.plasma.desktop-appletsrc" "latte/" "breezerc" "polybar/" "lattedockrc" "baloofilerc" "systemsettingsrc" "QtProject.conf" "plasmarc" "discoverrc" "./" "kmixrc" "autostart/" "trashrc" "ktimezonedrc" "Thunar/" "kactivitymanagerdrc" "kapmanrc" "Trolltech.conf" "kxkbrc" "khotkeysrc" "sddmthemeinstallerrc" "ksplashrc" "gtk-3.0/" "kwinrulesrc")
+
+ ("/home/nicolo/.config/xsettingsd/" (24223 1509 343939 564000) "../" "xsettingsd.conf" "./")
+
+ ("/home/nicolo/scripts/" (24224 21442 823113 24000) "../" "rofi.sh~" "#rofi.sh#" "rofi.sh" "./")
+
+ ("/home/nicolo/.config/gtk-3.0/" (24223 31287 567876 147000) "../" "settings.ini" "gtk.css" "colors.css" "settings.ini~" "./")
+
+ ("/home/" (24219 10046 60487 47000) "../" "nicolo/" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

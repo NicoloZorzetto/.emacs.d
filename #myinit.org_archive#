@@ -1,43 +1,15 @@
-:tangle yes
-#+TITLE: Personal init
-#+AUTHOR: Nicolò Zorzetto
-
-* Packages
-#+BEGIN_SRC emacs-lisp
-
-(require 'package)
-
-(add-to-list 'package-archives
-             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
-
-(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+#    -*- mode: org -*-
 
 
-; list the packages you want
-(setq package-list
-    '(auto-indent-mode use-package))
+Archived entries from file /home/nicolo/.emacs.d/myinit.org
 
 
-; activate all the packages
-(package-initialize)
-
-; fetch the list of packages available 
-(unless package-archive-contents
-  (package-refresh-contents))
-
-; install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
-
-#+END_SRC
 * Cosmetic settings
+:PROPERTIES:
+:ARCHIVE_TIME: 2020-04-29 Wed 11:39
+:ARCHIVE_FILE: ~/.emacs.d/myinit.org
+:ARCHIVE_CATEGORY: myinit
+:END:
 #+BEGIN_SRC emacs-lisp
 
 ;; Open agenda as initial buffer
@@ -54,8 +26,32 @@
 ;; Load Monospace font
 (set-frame-font "Monospace-12" nil t)
 
+;; Set the theme
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (load-theme 'zenburn t)
+;; (load-theme 'nofrils-acme-theme)
+
 ;; Set visual line mode by default
 (global-visual-line-mode 1)
+
+;; TRANSPARENCY
+;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+;;(set-frame-parameter (selected-frame) 'alpha <both>)
+;;(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+;;(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+
+(defun toggle-transparency ()
+  (interactive)
+  (let ((alpha (frame-parameter nil 'alpha)))
+    (set-frame-parameter
+     nil 'alpha
+     (if (eql (cond ((numberp alpha) alpha)
+                    ((numberp (cdr alpha)) (cdr alpha))
+                    ;; Also handle undocumented (<active> <inactive>) form.
+                    ((numberp (cadr alpha)) (cadr alpha)))
+              100)
+         '(85 . 50) '(100 . 100)))))
+'toggle-transparency
 
 ;; Show numbered lines
 (global-display-line-numbers-mode)
@@ -694,57 +690,4 @@
 
 ;;; afternoon-theme.el ends here
 
-#+END_SRC
-* Org-Mode
-#+BEGIN_SRC emacs-lisp
-
-  ;; Export settings
-  (require 'ox-md)
-
-  ;; View inline images in org-mode
-  (setq org-startup-with-inline-images t)
-
-  ;; Add shift selection to org mode
-  (setq org-support-shift-select t)
-  ;; (setq org-startup-indent t)
-
-  (setq auto-indent-on-visit-file t) ;; If you want auto-indent on for files
-  (require 'auto-indent-mode)
-   (auto-indent-global-mode)
-
-#+END_SRC
-** AGENDA
-#+BEGIN_SRC emacs-lisp
-
-;; SETS FOR AGENDA
-(require 'org)
-;; Use Ctrl-a to open AGENDA
-(global-set-key (kbd "\C-a") 'org-agenda)
-(global-set-key (kbd "\C-k") 'org-capture)
-(global-set-key (kbd "\C-d") 'org-todo)
-(setq org-log-done t)
-;; Load org files for agenda
-(setq org-agenda-files '("~/Documents/org/Agenda"))
-
-#+END_SRC
-* MISC
-#+BEGIN_SRC emacs-lisp
-
-;; Paste things from clipboard (other programs/apps)
-(setq select-enable-primary nil)
-(setq select-enable-clipboard t)
-
-
-;; Set interactive search
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
-;; (global-set-key (kbd "C-c") 'kill-ring-save)
-
-;; Use C-C and C-v like modern editors/applications
-(cua-mode 1)
-
-;; Save all backup files in a specific directory
-(setq backup-directory-alist `(("~/.emacs.d/backups")))
 #+END_SRC

@@ -2,18 +2,23 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/home/nicolo/Documents/org/" . "Agenda/")
+ ("/home/nicolo/Documents/m_f/" . "Blu2.0Vol3-2ndEd/")
+ ("/" . "etc/")
+ ("/home/nicolo/Documents/org/" . "Scuola/")
  ("/home/nicolo/Documents/" . "org/")
  ("/home/" . "nicolo/")
  ("/home/nicolo/.config/" . "polybar/")
- ("/home/nicolo/" . "Desktop/")
+ ("/home/nicolo/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/nicolo/.emacs.d/"
+ "/home/nicolo/Documents/org/Scuola/"
+ "/home/nicolo/Documents/m_f/"
+ "/etc/"
  "/home/nicolo/"
  "/home/nicolo/Desktop/"
- "/home/nicolo/.emacs.d/"
  "/home/nicolo/Documents/org/Agenda/"
  "/home/nicolo/.config/polybar/"
  "/home/nicolo/.config/i3/"
@@ -24,35 +29,43 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "myinit.org"
+ "panoramica.org"
+ "Blu2.0Vol3-2ndEd.djvu"
+ "pacman.conf"
+ "README.md"
  ".Xresources"
  "assegnazione-posti.cpp"
- "myinit.org"
  "agenda.org"
  "config"
  "polybar.sh"
- "xsettingsd.conf"
- "rofi.sh"
- "marco-polo.txt"
- "settings.ini"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/nicolo/" (24229 33860 36755 2000) ".moc/" ".config/" ".mplayer/" "../" ".bashrc~" ".cargo/" ".bashrc" ".bash_profile" ".kde4/" ".wget-hsts" ".cache/" ".emacs.d/" "Downloads/" ".zcompdump-galileo-5.8" ".mozilla/" ".openoffice/" ".zshrc" "scripts/" ".bash_history" ".Xresources" ".Xresources~" "images/" "Documents/" ".pki/" ".zsh_history" ".gtkrc-2.0~" ".zcompdump" "music/" ".zshrc.pre-oh-my-zsh" ".shell.pre-oh-my-zsh" ".gnupg/" ".viminfo" ".fehbg" ".fonts/" ".Xauthority" ".oh-my-zsh/" ".local/" "polybar-themes/" ".screenlayout/" "./" ".bash_logout" ".histfile" "Desktop/" ".gtkrc-2.0" ".icons/" ".viminfo.tmp")
+ ("/home/nicolo/.emacs.d/" (24233 18320 523 768000) "../" "myinit.org" "auto-save-list/" "myinit.el" "README.md" "backups/" "network-security.data" "init.el" "ido.last~" "ido.last" "elpa/" "./" ".git/")
+
+ ("/home/nicolo/Documents/org/Scuola/" (24233 17538 843886 201000) "../" "panoramica.org~" "orario-a-distanza.org" "panoramica.org" "./" "orario-a-distanza.org~")
+
+ ("/home/nicolo/" (24233 15004 720646 872000) ".moc/" ".config/" ".mplayer/" "../" ".bashrc~" ".wine/" ".cargo/" ".steampath" ".bashrc" ".bash_profile" ".pulse-cookie" ".atom/" ".kde4/" ".wget-hsts" ".thunderbird/" ".cache/" ".emacs.d/" "Downloads/" ".zcompdump-galileo-5.8" ".mozilla/" ".openoffice/" ".zshrc" "scripts/" ".bash_history" ".Xresources" ".Xresources~" "images/" "Documents/" ".pki/" ".zsh_history" ".gtkrc-2.0~" ".zcompdump" "music/" ".zshrc.pre-oh-my-zsh" ".shell.pre-oh-my-zsh" ".gnupg/" ".viminfo" ".fehbg" ".steam/" ".gitconfig" ".fonts/" ".Xauthority" ".oh-my-zsh/" ".steampid" ".local/" ".screenlayout/" "./" ".bash_logout" ".histfile" "Desktop/" ".gtkrc-2.0" ".icons/" ".viminfo.tmp")
+
+ ("/home/nicolo/Documents/m_f/Blu2.0Vol3-2ndEd/" (-1 61936 0 0) "cap01.pdf" "../" "cap04.pdf" "cap08.pdf" "capC01.pdf" "cap05.pdf" "capC05.pdf" "cover.png" "capC03.pdf" "beta1.pdf" "capC07.pdf" "formulario.pdf" "beta2.pdf" "capC02.pdf" "cap03.pdf" "sommario.pdf" "cap10.pdf" "capC04.pdf" "cap11.pdf" "cap07.pdf" "cap02.pdf" "cap06.pdf" "capC06.pdf" "./" "cap09.pdf")
+
+ ("/home/nicolo/Documents/m_f/" (24230 61548 0 0) "../" "Blu2.0Vol3-2ndEd/" "amaldiVol3/" "Blu2.0Vol3-2ndEd.djvu" "./" "3BSa-paralella.pdf")
+
+ ("/home/nicolo/Documents/" (24230 61554 717407 760000) "../" "org/" "./" "m_f/")
+
+ ("/etc/" (24230 43557 484317 908000) "pkcs11/" "ImageMagick-6/" "i3blocks.conf" "logrotate.d/" "cron.weekly/" "resolv.conf" "modprobe.d/" "bindresvport.blacklist" "../" "bash.bashrc" "appstream.conf" "mtab" "gimp/" "pacman.d/" "asciidoc/" "wgetrc" "locale.conf" "securetty" "request-key.d/" "rc_keymaps/" "conf.d/" "locale.gen" "lvm/" "vconsole.conf" "pulse/" "makepkg.conf" "sensors.d/" "rc.conf~" "hostname" "chromium/" "sudoers" "gtk-2.0/" "crypttab" "login.defs" "request-key.conf" "sddm.conf.d/" "vimrc" "hosts" "man_db.conf" "modules-load.d/" "my.cnf" "opt/" "gdb/" "iptables/" "mime.types" "apparmor.d/" "mkinitcpio.d/" "binfmt.d/" "libva.conf" "bluetooth/" "systemd/" "lirc/" "tmpfiles.d/" "libaudit.conf" "depmod.d/" "pam.d/" "cifs-utils/" "ifplugd/" "anacrontab" "mke2fs.conf" "sane.d/" "cron.monthly/" "cron.d/" "gshadow-" "wpa_supplicant/" "mailcap" "slsh.rc" "cron.hourly/" "libnl/" "rc_maps.cfg" "bash.bash_logout" "shadow" "services" "os-release" "shells" "mkinitcpio.conf" "krb5.conf" "xml/" "environment" "locale.gen~" "dhcpcd.conf" "protocols" "group-" "openldap/" "ethertypes" "sensors3.conf" "skel/" "passwd" "fonts/" "ssl/" "inputrc" "gshadow" "nsswitch.conf" "passwd.OLD" "signond.conf" "rc.conf" "mdadm.conf" "dconf/" "sddm.conf" "ts.conf" "zsh/" "kernel/" "trusted-key.key" "issue" "sysctl.d/" "udev/" "fstab" "i3/" "iproute2/" "nginx/" "initcpio/" "ld.so.conf" ".updated" "netconfig" "mplayer/" "X11/" "ssh/" "e2scrub.conf" "machine-id" "profile.d/" "xattr.conf" "healthd.conf" "my.cnf.d/" "libblockdev/" "localtime" "papersize" "ksysguarddrc" "polkit-1/" "host.conf" "passwd-" "arch-release" "ca-certificates/" "cron.daily/" "shadow-" "ld.so.conf.d/" "nanorc" "sudoers.d/" "group" "nscd.conf" "default/" "rhashrc" "audit/" "gai.conf" "signon-ui/" "ppp/" "grub.d/" "netctl/" "pipewire/" "security/" "audisp/" "pacman.conf" "./" "resolv.conf.bak" "i3status.conf" "xdg/" "openmpi/" "rpc" "profile" "resolvconf.conf" "UPower/" "bash_completion.d/" "NetworkManager/" "xinetd.d/" "udisks2/" "ImageMagick-7/" "ld.so.cache" "vdpau_wrapper.cfg" "adjtime" "gtk-3.0/" "libpaper.d/" "ndctl/" ".pwd.lock" "avahi/" "cron.deny" "motd")
+
+ ("/home/nicolo/Documents/org/Agenda/" (24230 40534 374359 551000) "../" "agenda.org" "agenda.org~" "./")
+
+ ("/home/nicolo/Documents/org/" (24229 49802 636163 205000) "../" "Agenda/" "./" "Scuola/")
 
  ("/home/nicolo/Desktop/" (24229 33689 723427 987000) "../" "assegnazione-posti.cpp~" "assegnazione-posti.cpp" ".directory" "marco-polo.txt" "./")
-
- ("/home/nicolo/.emacs.d/" (24229 33400 170105 325000) "../" "myinit.org" "auto-save-list/" "myinit.el" "init.el" "myinit.org~" "ido.last~" "ido.last" "./")
-
- ("/home/nicolo/Documents/org/Agenda/" (24229 33261 50110 458000) "../" "agenda.org" "agenda.org~" "./")
 
  ("/home/nicolo/.config/i3/" (24226 59061 956203 888000) "i3blocks.conf" "../" "config" "arc-theme/" "i3blocks.conf~" "config~" "./")
 
  ("/home/nicolo/.config/polybar/" (24226 59154 349533 801000) "../" "config" "polybar.sh~" "config.ini" "scripts/" "fonts/" "#config#" "polybar.sh" "config~" "launch.sh" "./")
-
- ("/home/nicolo/Documents/org/" (24229 32740 763462 854000) "../" "Agenda/" "./")
-
- ("/home/nicolo/Documents/" (24229 32735 973463 15000) "../" "org/" "./")
 
  ("/home/nicolo/.config/" (24226 56959 506281 466000) "powerdevilrc" "kdeglobals" "bluedevilglobalrc" "gpicview/" "plasma-localerc" "dolphinrc" "../" "gwenviewrc" "kglobalshortcutsrc" "pulse/" "rofi/" "korgacrc" "kwinrc" "gtk-2.0/" "gtkrc-2.0" "powermanagementprofilesrc" "plasmashellrc" "yay/" "xsettingsd/" "pavucontrol.ini" "kmail2rc" "kmixctrlrc" "vlc/" "kconf_updaterc" "kded5rc" ".i3status/" "auroraerc" "akregatorrc" "session/" "kwalletrc" "arkrc" "autostart-scripts/" "fontconfig/" "xfce4/" "akonadi/" "KDE/" "emaildefaults" "webengineurlinterceptoradblockrc" "kalarmrc" "gtkrc" "yakuakerc" "ksysguardrc" "neofetch/" "kateschemarc" "drkonqirc" "ranger/" "kde.org/" "plasma-nm" "dconf/" "kcminputrc" "kactivitymanagerd-statsrc" "ksmserverrc" "htop/" "i3/" "libaccounts-glib/" "GIMP/" "konsolerc" "kscreenlockerrc" "kcmfonts" "plasma-org.kde.plasma.desktop-appletsrc" "latte/" "breezerc" "polybar/" "lattedockrc" "baloofilerc" "systemsettingsrc" "QtProject.conf" "plasmarc" "discoverrc" "./" "kmixrc" "autostart/" "trashrc" "ktimezonedrc" "Thunar/" "kactivitymanagerdrc" "kapmanrc" "Trolltech.conf" "kxkbrc" "khotkeysrc" "sddmthemeinstallerrc" "ksplashrc" "gtk-3.0/" "kwinrulesrc")
 

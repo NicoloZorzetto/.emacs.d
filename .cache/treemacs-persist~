@@ -1,0 +1,5 @@
+* Default
+** Emacs config
+ - path :: ~/.emacs.d
+** Qtile config
+ - path :: ~/.config/qtile

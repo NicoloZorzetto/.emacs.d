@@ -2,8 +2,9 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/home/galileo/.config/" . "qtile/")
- ("/home/galileo/" . ".emacs.d/")
+ ("/home/galileo/.emacs.d/" . "themes/")
+ ("/home/galileo/.config/" . "alacritty/")
+ ("/home/galileo/" . ".config/")
  ("/home/galileo/Documents/org/" . "Agenda/")
  ("/home/galileo/Documents/" . "org/")
  ("/home/nicolo/Documents/CS/informatica/epidemic_prediction/data/starting_data/" . "italy/")
@@ -22,8 +23,9 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/galileo/.config/qtile/"
+ "/home/galileo/.config/alacritty/"
  "/home/galileo/.emacs.d/"
+ "/home/galileo/.config/qtile/"
  "/home/galileo/Desktop/"
  "/home/galileo/Documents/org/Agenda/"
  "/home/nicolo/Desktop/"
@@ -45,8 +47,9 @@
 
 ;; ----- ido-work-file-list -----
 (
- "config.py"
+ "alacritty.yml"
  "myinit.org"
+ "config.py"
  "prova.py"
  "agenda.org"
  "minimal.cpp"
@@ -54,22 +57,25 @@
  "plotter.cpp"
  "predictor.py"
  "micillo.cpp"
- "esponenziali.cpp"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/etc/" (24313 43132 549818 543000) "sysctl.d/" "chkconfig.d/" "pkgconfig/" "passwd-" "extlinux.conf" "locale.conf" "DIR_COLORS.256color" "nfs.conf" "dleyna-renderer-service.conf" "passwd" "at.deny" "hosts" "yum.repos.d/" "fprintd.conf" "nanorc" "abrt/" "vmware-tools/" "xl2tpd/" "fstab" "flatpak/" "gconf/" "system-release" "popt.d/" "audit/" "pipewire/" "prelink.conf.d/" "vpnc/" "ImageMagick-6/" "group" "issue" "sddm.conf" "tmpfiles.d/" "fcoe/" "hp/" "qemu-ga/" "dhcp/" "nftables/" "ostree/" "modules-load.d/" "netconfig" "plymouth/" "brltty.conf" "subgid-" "asound.conf" ".updated" "strongswan/" "mcelog/" "dnsmasq.d/" "subuid" "lvm/" "chrony.conf" "qemu/" "sysctl.conf" "udisks2/" "vimrc" "ld.so.conf" "nilfs_cleanerd.conf" "printcap" "gdm/" "exports" "request-key.conf" "libaudit.conf" "chromium/" "DIR_COLORS" "subuid-" "jvm/" "my.cnf" "libreport/" "egl/" "default/" "mailcap" "mke2fs.conf" "motd" "bash_completion.d/" "vdpau_wrapper.cfg" "filesystems" "jvm-commmon/" "rc0.d/" "issue.d/" "dnsmasq.conf" "crypto-policies/" "NetworkManager/" "ndctl/" "sudo.conf" "csh.cshrc" "fonts/" "rsyncd.conf" "libvirt/" "gimp/" "libblockdev/" "avahi/" "statetab.d/" "security/" "updatedb.conf" "i3/" "rygel.conf" "alternatives/" "selinux/" "xml/" "nsswitch.conf.bak" "crypttab" "dbus-1/" "alsa/" "libpaper.d/" "bashrc" "rdma/" "oddjobd.conf.d/" "dracut.conf" "rc3.d/" "sasl2/" "binfmt.d/" "foomatic/" "w3m/" "grub.d/" "zram.conf" "openldap/" "ipsec.d/" "cron.deny" "xdg/" "networks" "udev/" "adjtime" "pki/" "vulkan/" "gssproxy/" "tcsd.conf" "skel/" "anacrontab" "sssd/" "shells" "cups/" "ceph/" "sudoers" "logrotate.d/" "sysusers.d/" "fwupd/" "inittab" "dconf/" "rwtab.d/" "fedora-release" "ssl/" "depmod.d/" "rc1.d/" "modprobe.d/" "dracut.conf.d/" "favicon.png" "ssh/" "localtime" "ethertypes" "bluetooth/" "dnfdragora/" "vconsole.conf" "trusted-key.key" "ld.so.conf.d/" "bindresvport.blacklist" "kernel/" "csh.login" "cupshelpers/" "httpd/" "mime.types" "chrony.keys" "sos.conf" "gnupg/" "wgetrc" "rpc" "ksysguarddrc" "Trolltech.conf" "fuse.conf" "sgml/" "rc6.d/" ".java/" "motd.d/" "nfsmount.conf" "usb_modeswitch.conf" "ld.so.cache" "memtest86+.conf" "dnf/" "jwhois.conf" "aliases" "environment" "sane.d/" "my.cnf.d/" "crontab" "kde4rc" ".pwd.lock" "man_db.conf" "brltty/" "initial-setup/" "gcrypt/" "sysconfig/" "login.defs" "papersize" "anaconda/" "system-release-cpe" "issue.net" "brlapi.key" "krb5.conf" "PackageKit/" "firefox/" "kde/" "oddjobd.conf" "libnl/" "gss/" "ipsec.conf" "magic" "cron.d/" "shadow-" "host.conf" "sddm/" "tpm2-tss/" "pam.d/" "logrotate.conf" "openal/" "kdump.conf" "pulse/" "cni/" "X11/" "cron.hourly/" "kderc" "mtools.conf" "subgid" "passwdqc.conf" "cron.weekly/" "libuser.conf" "multipath/" "cifs-utils/" "exports.d/" "shadow" "iscsi/" "cron.daily/" "authselect/" "resolv.conf" "redhat-release" "profile.d/" "pm/" "i3status.conf" "sestatus.conf" "appstream.conf" "mtab" "radvd.conf" "gshadow" "openvpn/" "pinforc" "profile" "makedumpfile.conf.sample" "protocols" "gshadow-" "firewalld/" "grub2-efi.cfg" "idmapd.conf" "group-" "unbound/" "virc" "services" "speech-dispatcher/" "opt/" "wpa_supplicant/" "os-release" "groff/" "rc4.d/" "rc2.d/" "libibverbs.d/" "systemd/" "terminfo/" "ppp/" "containers/" "ipsec.secrets" "init.d/" "UPower/" "rpm/" "libssh/" "signond.conf" "grub2.cfg" "dleyna-server-service.conf" "inputrc" "rc5.d/" "zfs-fuse/" "gdbinit" "elinks.conf" "cron.monthly/" "DIR_COLORS.lightbgcolor" "gdbinit.d/" "glvnd/" "iproute2/" "samba/" "polkit-1/" "oddjob/" "krb5.conf.d/" "pkcs11/" "rc.d/" "nsswitch.conf" "xattr.conf" "hostname" "sudoers.d/" "request-key.d/" "geoclue/" "GREP_COLORS" "swid/" "java/" "machine-id" "../" "./")
+ ("/home/galileo/.config/alacritty/" (24311 20716 902137 138000) "./" "../" "alacritty.yml")
+
+ ("/home/galileo/" (24315 13295 754062 113000) ".config/" "Public/" "./" ".icons/" ".elinks/" ".bash_profile" ".python_history" ".mozilla/" ".viminfo" "../" "Templates/" ".steampath" ".emacs.d/" "dotfiles/" ".gtkrc-2.0" ".bash_history" ".pki/" "Downloads/" ".local/" ".kde/" "qtile/" ".steam/" ".bashrc" ".steampid" ".bash_logout" ".themes/" "Videos/" "Desktop/" "Pictures/" ".cache/" ".esd_auth" "Music/" ".gtkrc-2.0-kde4" ".var/" "Documents/")
+
+ ("/home/galileo/.emacs.d/" (24315 18039 352032 288000) "./" "backups/" "elpa/" "ido.last~" "myinit.org" "../" "#myinit.org#" "#ido.last#" "auto-save-list/" "snippets/" "README.md" "init.el" "myinit.el" "#myinit.org_archive#" ".git/" "elpy/" ".cache/" "ido.last")
+
+ ("/home/galileo/.emacs.d/themes/" (24313 4082 569577 723000) "./" "../" "gruvbox-theme.el")
+
+ ("/etc/" (24315 2291 673708 618000) "sysctl.d/" "chkconfig.d/" "pkgconfig/" "passwd-" "extlinux.conf" "locale.conf" "DIR_COLORS.256color" "nfs.conf" "dleyna-renderer-service.conf" "passwd" "at.deny" "hosts" "yum.repos.d/" "fprintd.conf" "nanorc" "abrt/" "vmware-tools/" "xl2tpd/" "fstab" "flatpak/" "gconf/" "system-release" "popt.d/" "audit/" "pipewire/" "prelink.conf.d/" "vpnc/" "ImageMagick-6/" "group" "issue" "sddm.conf" "tmpfiles.d/" "fcoe/" "hp/" "qemu-ga/" "dhcp/" "nftables/" "ostree/" "modules-load.d/" "netconfig" "plymouth/" "brltty.conf" "subgid-" "asound.conf" ".updated" "strongswan/" "mcelog/" "dnsmasq.d/" "subuid" "lvm/" "chrony.conf" "qemu/" "sysctl.conf" "udisks2/" "vimrc" "ld.so.conf" "nilfs_cleanerd.conf" "printcap" "gdm/" "exports" "request-key.conf" "libaudit.conf" "chromium/" "DIR_COLORS" "subuid-" "jvm/" "my.cnf" "libreport/" "egl/" "default/" "mailcap" "mke2fs.conf" "motd" "bash_completion.d/" "vdpau_wrapper.cfg" "filesystems" "jvm-commmon/" "rc0.d/" "issue.d/" "dnsmasq.conf" "crypto-policies/" "NetworkManager/" "ndctl/" "sudo.conf" "csh.cshrc" "fonts/" "rsyncd.conf" "libvirt/" "gimp/" "libblockdev/" "avahi/" "statetab.d/" "security/" "updatedb.conf" "i3/" "rygel.conf" "alternatives/" "selinux/" "xml/" "nsswitch.conf.bak" "crypttab" "dbus-1/" "alsa/" "libpaper.d/" "bashrc" "rdma/" "oddjobd.conf.d/" "dracut.conf" "rc3.d/" "sasl2/" "binfmt.d/" "foomatic/" "w3m/" "grub.d/" "zram.conf" "openldap/" "ipsec.d/" "cron.deny" "xdg/" "networks" "udev/" "adjtime" "pki/" "vulkan/" "gssproxy/" "tcsd.conf" "skel/" "anacrontab" "sssd/" "shells" "cups/" "ceph/" "sudoers" "logrotate.d/" "sysusers.d/" "fwupd/" "inittab" "dconf/" "rwtab.d/" "fedora-release" "ssl/" "depmod.d/" "rc1.d/" "modprobe.d/" "dracut.conf.d/" "favicon.png" "ssh/" "localtime" "ethertypes" "bluetooth/" "dnfdragora/" "vconsole.conf" "trusted-key.key" "ld.so.conf.d/" "bindresvport.blacklist" "kernel/" "csh.login" "cupshelpers/" "httpd/" "mime.types" "chrony.keys" "sos.conf" "gnupg/" "wgetrc" "rpc" "ksysguarddrc" "Trolltech.conf" "fuse.conf" "sgml/" "rc6.d/" ".java/" "motd.d/" "nfsmount.conf" "usb_modeswitch.conf" "ld.so.cache" "memtest86+.conf" "dnf/" "jwhois.conf" "aliases" "environment" "sane.d/" "my.cnf.d/" "crontab" "kde4rc" ".pwd.lock" "man_db.conf" "brltty/" "initial-setup/" "gcrypt/" "sysconfig/" "login.defs" "papersize" "anaconda/" "system-release-cpe" "issue.net" "brlapi.key" "krb5.conf" "PackageKit/" "firefox/" "kde/" "oddjobd.conf" "libnl/" "gss/" "ipsec.conf" "magic" "cron.d/" "shadow-" "host.conf" "sddm/" "tpm2-tss/" "pam.d/" "logrotate.conf" "openal/" "kdump.conf" "pulse/" "cni/" "X11/" "cron.hourly/" "kderc" "mtools.conf" "subgid" "passwdqc.conf" "cron.weekly/" "libuser.conf" "multipath/" "cifs-utils/" "exports.d/" "shadow" "iscsi/" "cron.daily/" "authselect/" "resolv.conf" "redhat-release" "profile.d/" "pm/" "i3status.conf" "sestatus.conf" "appstream.conf" "mtab" "radvd.conf" "gshadow" "openvpn/" "pinforc" "profile" "makedumpfile.conf.sample" "protocols" "gshadow-" "firewalld/" "grub2-efi.cfg" "idmapd.conf" "group-" "unbound/" "virc" "services" "speech-dispatcher/" "opt/" "wpa_supplicant/" "os-release" "groff/" "rc4.d/" "rc2.d/" "libibverbs.d/" "systemd/" "terminfo/" "ppp/" "containers/" "ipsec.secrets" "init.d/" "UPower/" "rpm/" "libssh/" "signond.conf" "grub2.cfg" "dleyna-server-service.conf" "inputrc" "rc5.d/" "zfs-fuse/" "gdbinit" "elinks.conf" "cron.monthly/" "DIR_COLORS.lightbgcolor" "gdbinit.d/" "glvnd/" "iproute2/" "samba/" "polkit-1/" "oddjob/" "krb5.conf.d/" "pkcs11/" "rc.d/" "nsswitch.conf" "xattr.conf" "hostname" "sudoers.d/" "request-key.d/" "geoclue/" "GREP_COLORS" "swid/" "java/" "machine-id" "../" "./")
+
+ ("/home/galileo/Desktop/" (24314 10957 933775 582000) "./" "../" "Old Firefox Data/" "cv_europeo.doc" "prova.py~" "prova.py")
+
+ ("/home/galileo/.config/qtile/" (24314 30359 677554 12000) "./" "config_qtile_autostart.sh" "../" "config.py" "__pycache__/" "autostart.sh" "icons/" "config.py~" "config_old.py")
 
  ("/home/galileo/Documents/org/Agenda/" (24311 22168 274410 221000) "./" "../" "agenda.org~" "agenda.org")
-
- ("/home/galileo/Desktop/" (24310 22396 481135 915000) "./" "../" "Old Firefox Data/" "prova.py~" "prova.py")
-
- ("/home/galileo/.emacs.d/" (24313 47717 819788 470000) "./" "elpa/" "ido.last~" "myinit.org" "../" "#ido.last#" "session.106209c017505a0c54159286103156920800000019320090" "session.107070aa4ec440cf8159257251624055700000018520086" "auto-save-list/" "snippets/" "README.md" "session.101358d470c9ca6924159273392074384100000022320084" "init.el" "url/" "myinit.el" "themes/" "session.1097663d0e5c54204715931652247228600000019150087" "#myinit.org_archive#" ".git/" "elpy/" "network-security.data" "ido.last" "session.1057d1a3d93f6c7f65159265685557237500000023410084" "session.10b450d504b2c4c00d159273395878011500000040190084")
-
- ("/home/galileo/.config/qtile/" (24313 47717 811788 466000) "./" "config_qtile_autostart.sh" "../" "config.py" "__pycache__/" "autostart.sh" "icons/" "config.py~" "config_old.py")
-
- ("/home/galileo/" (24313 46126 384221 772000) ".config/" "Public/" "./" ".icons/" ".elinks/" ".bash_profile" ".python_history" ".mozilla/" ".viminfo" "../" "Templates/" ".steampath" ".emacs.d/" ".gtkrc-2.0" ".bash_history" ".pki/" "Downloads/" ".local/" ".kde/" ".steam/" ".bashrc" ".steampid" ".bash_logout" ".themes/" "Videos/" "Desktop/" "Pictures/" ".cache/" ".esd_auth" "Music/" ".gtkrc-2.0-kde4" ".var/" "Documents/")
 
  ("/home/galileo/.config/GIMP/" (24302 19748 708347 639000) "./" "../" "2.10/")
 

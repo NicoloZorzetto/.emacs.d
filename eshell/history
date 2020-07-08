@@ -1,0 +1,3 @@
+htop
+python3 -m pip install cryptography
+pip3 install cryptography

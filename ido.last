@@ -23,8 +23,8 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/galileo/.config/alacritty/"
  "/home/galileo/.emacs.d/"
+ "/home/galileo/.config/alacritty/"
  "/home/galileo/.config/qtile/"
  "/home/galileo/Desktop/"
  "/home/galileo/Documents/org/Agenda/"
@@ -47,8 +47,8 @@
 
 ;; ----- ido-work-file-list -----
 (
- "alacritty.yml"
  "myinit.org"
+ "alacritty.yml"
  "config.py"
  "prova.py"
  "agenda.org"
@@ -61,11 +61,11 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/galileo/.emacs.d/" (24319 2586 989819 844000) "./" "elpa/" "ido.last~" "myinit.org" "../" "#ido.last#" "auto-save-list/" "snippets/" "README.md" "init.el" "myinit.el" "#myinit.org_archive#" ".git/" "elpy/" ".cache/" "network-security.data" "ido.last" "eshell/")
+
+ ("/home/galileo/" (24323 9699 117451 911000) ".config/" "Public/" "./" ".icons/" ".elinks/" ".bash_profile" ".python_history" ".mozilla/" ".viminfo" ".gnome/" "../" "Templates/" ".steampath" ".emacs.d/" "dotfiles/" ".gtkrc-2.0" ".bash_history" ".pki/" "Downloads/" ".local/" ".kde/" ".steam/" ".bashrc" ".steampid" ".bash_logout" ".themes/" "Videos/" "Desktop/" "Pictures/" ".cache/" ".esd_auth" "Music/" ".gtkrc-2.0-kde4" ".var/" "Documents/")
+
  ("/home/galileo/.config/alacritty/" (24311 20716 902137 138000) "./" "../" "alacritty.yml")
-
- ("/home/galileo/" (24315 13295 754062 113000) ".config/" "Public/" "./" ".icons/" ".elinks/" ".bash_profile" ".python_history" ".mozilla/" ".viminfo" "../" "Templates/" ".steampath" ".emacs.d/" "dotfiles/" ".gtkrc-2.0" ".bash_history" ".pki/" "Downloads/" ".local/" ".kde/" "qtile/" ".steam/" ".bashrc" ".steampid" ".bash_logout" ".themes/" "Videos/" "Desktop/" "Pictures/" ".cache/" ".esd_auth" "Music/" ".gtkrc-2.0-kde4" ".var/" "Documents/")
-
- ("/home/galileo/.emacs.d/" (24315 18039 352032 288000) "./" "backups/" "elpa/" "ido.last~" "myinit.org" "../" "#myinit.org#" "#ido.last#" "auto-save-list/" "snippets/" "README.md" "init.el" "myinit.el" "#myinit.org_archive#" ".git/" "elpy/" ".cache/" "ido.last")
 
  ("/home/galileo/.emacs.d/themes/" (24313 4082 569577 723000) "./" "../" "gruvbox-theme.el")
 

@@ -1,0 +1,71 @@
+:tangle yes
+
+
+* Window settings
+** Hide the tool bar
+The toolbar occupies a lot of space and often never gets used. Hiding it gives you a bit more real estate and removes the sometimes distracting icons.
+If you use it or want to try it just replace the '0' with '1' or comment the src line putting ";" at the beginning of it. 
+Checkout the wiki article if you want to customize it or learn more about it.
+[[https://www.emacswiki.org/emacs/ToolBar][Toolbar wiki article]]
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode 0)
+#+END_SRC
+** Hide the scroll bar
+The scrollbar can be distracting, I have also seen some using it as a sort of minimal and rudimental minimap to give them info about their position within a buffer, but most hide it.
+If you use it or find it usefull delete this whole entry, replace the '0' with '1' or comment the src line putting ";" at the beginning of it. 
+Checkout the wiki article if you want to customize it or learn more about it.
+[[https://www.emacswiki.org/emacs/ScrollBar][Scrollbar wiki article]]
+#+BEGIN_SRC emacs-lisp
+(scroll-bar-mode 0)
+#+END_SRC
+* Buffer settings
+** Uniquify the name of buffers
+If you visit files that have the same name using uniquify is a great way to tell them apart.
+The 'forward' naming method includes part of the files' directory name at the beginning of the buffer name; using this method, buffers visiting the files '/u/rms/tmp/Makefile' and '/usr/projects/zaphod/Makefile' would be named ‘tmp/Makefile’ and ‘zaphod/Makefile’.
+If you want the standard naming of buffers just delete this whole entry or comment the src lines by putting ";" at the beginning of them. 
+Checkout the manual page if you want to learn more about uniquify or customize the naming differently or learn more about it.
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html][Uniquify manual page]]
+#+BEGIN_SRC emacs-lisp
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+#+END_SRC
+** Modify the mode line
+The mode line is the line at the bottom of the window right above the minibuffer.
+This particular modification displays a list containing:
+- The name of the file you are visiting expressed as " %b " at relative line 8;
+- If you have unsaved changes, displayed as "(modified)" and expressed at relative lines 9 and 10;
+- The position of your cursor, displayed as "vertical position : horizontal position" and expressed at relative lines 11 and 12.
+If you liked the default better or want to customize it differently checkout the manual page.
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][Mode line manual page]]
+#+BEGIN_SRC emacs-lisp
+(defun mode-line-render (left right)
+  (let* ((available-width (- (window-width) (length left) )))
+    (format (format "%%s %%%ds" available-width) left right)))
+(setq-default mode-line-format
+     '((:eval
+       (mode-line-render
+       (format-mode-line (list
+         " %b "
+         (if (and buffer-file-name (buffer-modified-p))
+             (propertize "(modified)" 'face `(:inherit face-faded)))))
+       (format-mode-line
+        (propertize "%4l:%2c  " 'face `(:inherit face-faded)))))))
+#+END_SRC
+** Show matching parentheses
+'show-paren-mode' allows one to see matching pairs of parentheses and other characters. When the cursor is on the opening character of one of the paired characters, the other is highlighted. When the point is after the closing character of one of the paired characters, the other is highlighted.
+This is extremely usefull in coding, especially in Lisp and Lisp-based languages where there are a lot of parentheses.
+If you don't want the matching parenthesis to be highlighted delete this whole entry, replace the 't' with 'nil' or comment the src line by putting ";" at the beginning of it.
+Checkout the wiki article if you want to customize it differently or learn more about it.
+[[https://www.emacswiki.org/emacs/ShowParenMode][Paren-mode wiki article]]
+#+BEGIN_SRC emacs-lisp
+(show-paren-mode t)
+#+END_SRC
+** Show numbered lines
+Line numbers are very useful when navigating buffers and referencing other material (guides, debuggers, compilers, interpreters, etc. ).
+The "global-display-line-numbers-mode" displays line numbers in every buffer of your emacs.
+If you want to hide line numbers just delete this whole entry, replace with '0' the '1' or comment out the src line by putting ";" at the beginning of it.
+Checkout the wiki article if you want to customize it differently or learn more about it.
+[[https://www.emacswiki.org/emacs/LineNumbers#toc1][Line numbers wiki article]]
+#+BEGIN_SRC emacs-lisp
+(global-display-line-numbers-mode 1)
+#+END_SRC

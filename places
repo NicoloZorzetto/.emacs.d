@@ -1,0 +1,6 @@
+;;; -*- coding: utf-8 -*-
+(("/home/galileo/"
+  (dired-filename . "/home/galileo/Desktop"))
+ ("/home/galileo/Desktop/"
+  (dired-filename . "/home/galileo/Desktop/prova.py"))
+ ("/home/galileo/Desktop/prova.py" . 28))

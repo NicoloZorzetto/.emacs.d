@@ -19,16 +19,6 @@ Checkout the wiki article if you want to customize it or learn more about it.
 (scroll-bar-mode 0)
 #+END_SRC
 * Buffer settings
-** Uniquify the name of buffers
-If you visit files that have the same name using uniquify is a great way to tell them apart.
-The 'forward' naming method includes part of the files' directory name at the beginning of the buffer name; using this method, buffers visiting the files '/u/rms/tmp/Makefile' and '/usr/projects/zaphod/Makefile' would be named ‘tmp/Makefile’ and ‘zaphod/Makefile’.
-If you want the standard naming of buffers just delete this whole entry or comment the src lines by putting ";" at the beginning of them. 
-Checkout the manual page if you want to learn more about uniquify or customize the naming differently or learn more about it.
-[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html][Uniquify manual page]]
-#+BEGIN_SRC emacs-lisp
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-#+END_SRC
 ** Modify the mode line
 The mode line is the line at the bottom of the window right above the minibuffer.
 This particular modification displays a list containing:

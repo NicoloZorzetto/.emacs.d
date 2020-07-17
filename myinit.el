@@ -22,13 +22,23 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(use-package dashboard
+:ensure t
+:config
+(setq dashboard-banner-logo-title "Welcome back Nicolò.")
+(setq dashboard-center-content t)
+(dashboard-setup-startup-hook)
+(setq dashboard-set-footer nil)
+(setq dashboard-set-file-icons t)
+:init
+)
+
 (global-visual-line-mode 1)
+
+(load "~/.emacs.d/zemacs-dark-theme.el")
 
 (setq org-support-shift-select 1)
 
 (setq org-agenda-files (list "~/Documents/org/Agenda/agenda.org"))
 
 (global-set-key (kbd "M-5") "~")
-
-;(org-babel-load-file "~/.emacs.d/zemacs-dark-theme.org")
-(load "~/.emacs.d/zemacs-dark-theme.el")

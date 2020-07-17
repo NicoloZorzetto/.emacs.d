@@ -61,6 +61,21 @@ I have no idea why they didn't bind it by default.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
+*** Emacs-dashboard
+Emacs dashboard is what drives Zemacs's custom initial buffer.
+[[https://github.com/emacs-dashboard/emacs-dashboard][Emacs-dashboard github]]
+#+BEGIN_SRC emacs-lisp
+(use-package dashboard
+:ensure t
+:config
+(setq dashboard-banner-logo-title "Welcome back Nicolò.")
+(setq dashboard-center-content t)
+(dashboard-setup-startup-hook)
+(setq dashboard-set-footer nil)
+(setq dashboard-set-file-icons t)
+:init
+)
+#+END_SRC
 * Visual settings
 These are settings that only effect the visual of emacs, they shouldn't effect the usage or commands in any way.
 This does not contain the theme (by default modus-operandi) because, since I installed it as a package, I thought best to include it in the "installation and configuration of packages".
@@ -71,7 +86,12 @@ This command shows line numbers.
 #+BEGIN_SRC emacs-lisp
 (global-visual-line-mode 1)
 #+END_SRC
-* Org mode settings
+** Load theme
+zemacs-galileo is a custom Zemacs theme. It will work with any emacs distro and you can load any theme you want using Zemacs.
+#+BEGIN_SRC emacs-lisp
+(load "~/.emacs.d/zemacs-dark-theme.el")
+#+END_SRC
+* Org mod e settings
 ** Allow shift-select in org buffers
 This command allows shift-selection in org-buffers. 
 I honestly don't know why and I don't want to know why this is not enabled by default. I imagine something to do with Agenda command that uses shift.
@@ -116,23 +136,3 @@ On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. Th
 
 
 
-* Something
-This is something just because
-** Something
-This is something just because
-*** Something
-This is something just because
-**** Something
-This is something just because
-***** Something
-This is something just because
-****** Something
-This is something just because
-******* Something
-This is something just because
-******** Something
-This is something just because
-#+BEGIN_SRC emacs-lisp
-;(org-babel-load-file "~/.emacs.d/zemacs-dark-theme.org")
-(load "~/.emacs.d/zemacs-dark-theme.el")
-#+END_SRC

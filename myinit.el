@@ -22,18 +22,13 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
-; (use-package modus-operandi-theme
-; :ensure t
-; :init
-; )
-
 (global-visual-line-mode 1)
 
-(tool-bar-mode 0)
+(setq org-support-shift-select 1)
 
-(load '~/.emacs.d/elegant-emacs/elegance')
-; (load 'elegant-emacs/sanity.el')
-
-(setq org-support-shift-select t)
+(setq org-agenda-files (list "~/Documents/org/Agenda/agenda.org"))
 
 (global-set-key (kbd "M-5") "~")
+
+;(org-babel-load-file "~/.emacs.d/zemacs-dark-theme.org")
+(load "~/.emacs.d/zemacs-dark-theme.el")

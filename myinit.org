@@ -1,8 +1,6 @@
-4:tangle yes
+:tangle yes
 #+AUTHOR: Nicolò Zorzetto
 #+TITLE: Emacs Config
-
-
 
 * Installation and configuration of packages
 ** Package repositories
@@ -63,16 +61,6 @@ I have no idea why they didn't bind it by default.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
-*** [theme] Modus Operandi
-Modus operandi is a light-mode theme. Nothing special but pretty clean and minimalistic. It might look like the default one but has some minor color changes. Nothing extraordinary but makes it easier to see for example the difference between org-mode entries and plain text.
-[[https://melpa.org/#/modus-operandi-theme][modus-operandi-theme Melpa page]]
-[[https://gitlab.com/protesilaos/modus-themes][modus-operandi-theme Gitlab]]
-#+BEGIN_SRC emacs-lisp
-; (use-package modus-operandi-theme
-; :ensure t
-; :init
-; )
-#+END_SRC
 * Visual settings
 These are settings that only effect the visual of emacs, they shouldn't effect the usage or commands in any way.
 This does not contain the theme (by default modus-operandi) because, since I installed it as a package, I thought best to include it in the "installation and configuration of packages".
@@ -83,26 +71,18 @@ This command shows line numbers.
 #+BEGIN_SRC emacs-lisp
 (global-visual-line-mode 1)
 #+END_SRC
-** Hide the tool bar
-I do not use the buttons in the toolbar so I hide it to have more real estate at the same window size. I leave the menu bar because it's sometimes useful to refresh not often used keybindings.
-If you use it or want to try it just replace the '0' with '1' or comment the src line putting ";" at the beginning of it. Checkout the wiki article if you want to customize it.
-[[https://www.emacswiki.org/emacs/ToolBar][Tool bar wiki article]]
-#+BEGIN_SRC emacs-lisp
-(tool-bar-mode 0)
-#+END_SRC
-** [theme] Elegant emacs
-
-#+BEGIN_SRC emacs-lisp
-(load '~/.emacs.d/elegant-emacs/elegance')
-; (load 'elegant-emacs/sanity.el')
-#+END_SRC
 * Org mode settings
 ** Allow shift-select in org buffers
 This command allows shift-selection in org-buffers. 
 I honestly don't know why and I don't want to know why this is not enabled by default. I imagine something to do with Agenda command that uses shift.
 I am working on a way around that.
 #+BEGIN_SRC emacs-lisp
-(setq org-support-shift-select t)
+(setq org-support-shift-select 1)
+#+END_SRC
+** Agenda
+*** Set agenda files
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files (list "~/Documents/org/Agenda/agenda.org"))
 #+END_SRC
 * Keybindings specific to Italian Keyboards
 Using the Italian keyboard layout and emacs can be troublesome. 
@@ -131,4 +111,28 @@ On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. Th
 #+BEGIN_SRC 
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
+#+END_SRC
+
+
+
+
+* Something
+This is something just because
+** Something
+This is something just because
+*** Something
+This is something just because
+**** Something
+This is something just because
+***** Something
+This is something just because
+****** Something
+This is something just because
+******* Something
+This is something just because
+******** Something
+This is something just because
+#+BEGIN_SRC emacs-lisp
+;(org-babel-load-file "~/.emacs.d/zemacs-dark-theme.org")
+(load "~/.emacs.d/zemacs-dark-theme.el")
 #+END_SRC

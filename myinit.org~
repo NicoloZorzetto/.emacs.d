@@ -2,101 +2,25 @@
 #+AUTHOR: Nicolò Zorzetto
 #+TITLE: Emacs Config
 
+* Packages
+** Add repo
+#+BEGIN_SRC emacs-lisp
 
+#+END_SRC
 
-* Installation and configuration of packages
-** Package repositories
-I have had some problems on Fedora and older versions of MacOS (when it was still called OSX) installing packages.
-Adding repositories manually seems to solve the problems.
-In case you need packages outside MELPA you can search and add more repositories using the format I used or referencing the Wiki article.
-If you still encounter some problems press "M-x" (Alt+x), type "package-refresh-contents" and then press RETURN. This will reload the repositories; you could also put it in your config but it will slow down the opening of emacs.
-[[https://www.emacswiki.org/emacs/InstallingPackages][Wiki article]]
+** Elpy
 #+BEGIN_SRC emacs-lisp
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(package-install elpy)
 #+END_SRC
-** Use-package
-Use-package is a package simplyfies the install and configuration of packages.
-It also decreases the load time of emacs by autoloading the packages instead of loading them on startup.
-I'm honestly not using it at the full of its potential so please checkout the wiki article.
-[[https://www.emacswiki.org/emacs/UsePackage][Use-package wiki article]]
-[[https://github.com/jwiegley/use-package][Use-package Github]]
-#+BEGIN_SRC emacs-lisp
-(package-install 'use-package)
-#+END_SRC
-** Packages
-*** Elpy
-Elpy is a package that offers code completion, interactive shell, virtualenv support, syntax checking, instant documentation inside the minibuffer, debugging, testing, profiling, code highlighting and snippet expansion for Python rendering Emacs almost a Python IDE.
-It is loaded automatically when you visit a Python (.py) file allowing you to use its keybindings and functions. 
-[[https://elpy.readthedocs.io/en/latest/][Elpy documentation]]
-[[https://github.com/jorgenschaefer/elpy][Elpy Github]]
-#+BEGIN_SRC emacs-lisp
-(use-package elpy
-:ensure t
-:init
-)
-#+END_SRC
-I use the Jupyter interactive shell (it is also the buffer where your output is shown) because I am very familiar with it and it's easier to navigate in my opinion.
-Try the others and find for yourself or use another one you've already decided you like best consulting the Docs.
-[[https://elpy.readthedocs.io/en/latest/ide.html#interactive-python][Elpy's interactive shells docs article]]
-#+BEGIN_SRC emacs-lisp
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
-#+END_SRC
-*** Magit
-Magit is a package that adds a git client to emacs. While it does not add functionality you could not get using another client it lets you do everything withitn emacs.
-[[https://magit.vc/manual/magit/Introduction.html#Introduction][Magit official docs]]
-[[https://github.com/magit/magit][Magit Github]]
-#+BEGIN_SRC emacs-lisp
-(use-package magit
-:ensure t
-:init
-)
-#+END_SRC
-I have binded "magit-status" to "C-x g" (g for git). This allows you to press the keybinding while in a git directory (I use dired for navigation) to spawn the magit buffer showing the git status of the directory.
-This is not binded to anything by default, but I recently found out it is recommended in the docs ([[https://magit.vc/manual/magit/Getting-Started.html][here]]) and with the same binding. 
-I have no idea why they didn't bind it by default.
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x g") 'magit-status)
-#+END_SRC
-*** [theme] Modus Operandi
-Modus operandi is a light-mode theme. Nothing special but pretty clean and minimalistic. It might look like the default one but has some minor color changes. Nothing extraordinary but makes it easier to see for example the difference between org-mode entries and plain text.
-[[https://melpa.org/#/modus-operandi-theme][modus-operandi-theme Melpa page]]
-[[https://gitlab.com/protesilaos/modus-themes][modus-operandi-theme Gitlab]]
-#+BEGIN_SRC emacs-lisp
-(use-package modus-operandi-theme
-:ensure t
-:init
-)
-#+END_SRC
+
 * Visual settings
-These are settings that only effect the visual of emacs, they shouldn't effect the usage or commands in any way.
-This does not contain the theme (by default modus-operandi) because, since I installed it as a package, I thought best to include it in the "installation and configuration of packages".
-** Set numbered lines
-In emacs by default lines are not numbered. It is easier to browse code and reference debuggers/compilers when they are.
-This command shows line numbers.
-[[https://www.emacswiki.org/emacs/VisualLineMode][Wiki article on visual line mode]]
+** [theme] modus-vivendi
 #+BEGIN_SRC emacs-lisp
-(global-visual-line-mode 1)
+(package-install modus-vivendi-theme)
+(load-theme 'modus-vivendi t)
 #+END_SRC
-** Hide the tool bar
-I do not use the buttons in the toolbar so I hide it to have more real estate at the same window size. I leave the menu bar because it's sometimes useful to refresh not often used keybindings.
-If you use it or want to try it just replace the '0' with '1' or comment the src line putting ";" at the beginning of it. Checkout the wiki article if you want to customize it.
-[[https://www.emacswiki.org/emacs/ToolBar][Tool bar wiki article]]
 #+BEGIN_SRC emacs-lisp
-(tool-bar-mode 0)
-#+END_SRC
-* Org mode settings
-** Allow shift-select in org buffers
-This command allows shift-selection in org-buffers. 
-I honestly don't know why and I don't want to know why this is not enabled by default. I imagine something to do with Agenda command that uses shift.
-I am working on a way around that.
-#+BEGIN_SRC emacs-lisp
-(setq org-support-shift-select t)
+
 #+END_SRC
 * Keybindings specific to Italian Keyboards
 Using the Italian keyboard layout and emacs can be troublesome. 

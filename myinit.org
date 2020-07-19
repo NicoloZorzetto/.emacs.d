@@ -2,6 +2,62 @@
 #+AUTHOR: Nicolò Zorzetto
 #+TITLE: Emacs Config
 
+* Packages
+** Initialize
+#+BEGIN_SRC emacs-lisp
+(package-initialize)
+#+END_SRC
+** Use-package
+#+BEGIN_SRC emacs-lisp
+(package-install 'use-package)
+#+END_SRC
+
+#+RESULTS:
+: ‘use-package’ is already installed
+
+** All-the-icons
+Icons package used for the dashboard and maybe something else in the future.
+#+BEGIN_SRC emacs-lisp
+(package-install 'all-the-icons)
+#+END_SRC
+
+** Elpy
+Elpy is a package that renders Emacs almost a Python IDE.
+#+BEGIN_SRC emacs-lisp
+(package-install 'elpy)
+(require 'elpy)
+#+END_SRC
+
+** Dashboard
+The initial buffer.
+#+BEGIN_SRC emacs-lisp
+(package-install 'dashboard)
+
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "Welcome back Nicolò")
+;(setq dashboard-startup-banner [VALUE])
+(setq dashboard-center-content t)
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+(setq dashboard-set-footer nil)
+#+END_SRC
+
+** Magit
+Git client inside emacs.
+#+BEGIN_SRC emacs-lisp
+(package-install 'magit)
+#+END_SRC
+
+#+RESULTS:
+| #s(package-desc async (20200113 1745) Asynchronous processing in Emacs ((emacs (24 3))) tar melpa nil ((:commit . 86aef2c38e7d35e8509b7feeee3e989d825eba91) (:keywords async) (:url . https://github.com/jwiegley/emacs-async)) nil) | #s(package-desc with-editor (20200617 1234) Use the Emacsclient as $EDITOR ((emacs (24 4)) (async (1 9))) tar melpa nil ((:commit . 7c512887c6d69864fb600d32fb92857c51babcff) (:keywords tools) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/with-editor)) nil) | #s(package-desc transient (20200707 2034) Transient commands ((emacs (25 1))) tar melpa nil ((:commit . dd9c40adc3eb7f8656c8a17c3c450388610b7986) (:keywords bindings) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/transient)) nil) | #s(package-desc dash (20200524 1947) A modern list library for Emacs nil tar melpa nil ((:commit . 732d92eac56023a4fb4a5dc3d9d4e274ebf44bf9) (:keywords lists) (:authors (Magnar Sveen . magnars@gmail.com)) (:maintainer Magnar Sveen . magnars@gmail.com)) nil) | #s(package-desc git-commit (20200701 2112) Edit Git commit messages ((emacs (25 1)) (dash (20200524)) (transient (20200601)) (with-editor (20200522))) single melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/magit)) nil) | #s(package-desc magit (20200713 2103) A Git porcelain inside Emacs. ((emacs (25 1)) (async (20200113)) (dash (20200524)) (git-commit (20200516)) (transient (20200601)) (with-editor (20200522))) tar melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc)) nil) |
+
+* Visual settings
+** [theme] modus-vivendi
+#+BEGIN_SRC emacs-lisp
+(package-install 'modus-vivendi-theme)
+(load-theme 'modus-vivendi t)
+#+END_SRC
+
 * Keybindings specific to Italian Keyboards
 Using the Italian keyboard layout and emacs can be troublesome. 
 In GNU/Linux systems these are taken care of by default, with the exception of the tidle ("~"),  but in MacOS and Windows(?) they are noy. 
@@ -29,12 +85,4 @@ On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. Th
 #+BEGIN_SRC 
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
-#+END_SRC
-
-
-
-
-* Load Zemacs
-#+BEGIN_SRC emacs-lisp
-(org-babel-load-file "~/.emacs.d/zemacs.org")
 #+END_SRC

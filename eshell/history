@@ -1,0 +1,16 @@
+shutdown now
+git clone https://github.com/mkmcc/gnuplot-mode
+ls
+cd elpy/
+cd ..
+cd elpa
+ls
+mkdir gunplot-mode
+cd ..
+cd gnuplot-mode/
+cd ..
+rm -rf gnuplot-mode/
+cd elpa
+ls
+rm -rf gnuplot-mode
+cd ..

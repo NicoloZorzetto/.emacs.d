@@ -1,0 +1,55 @@
+:tangle yes
+#+AUTHOR: Nicolò Zorzetto
+#+TITLE: Emacs Config
+
+* Packages
+** Add repo
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+** Use-package
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+** Elpy
+#+BEGIN_SRC emacs-lisp
+(package-install elpy)
+#+END_SRC
+** 
+* Visual settings
+** [theme] modus-vivendi
+#+BEGIN_SRC emacs-lisp
+(package-install modus-vivendi-theme)
+(load-theme 'modus-vivendi t)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+* Keybindings specific to Italian Keyboards
+Using the Italian keyboard layout and emacs can be troublesome. 
+In GNU/Linux systems these are taken care of by default, with the exception of the tidle ("~"),  but in MacOS and Windows(?) they are noy. 
+Leaving these even if you run GNU/Linux should not cause any problem or warning.
+If you use another layout simply put your curson on the "* Keybindings specific to Italian Keyboards" line and press "C-c C-x C-w" to delete the whole entry. This also works with any entry in any org-document.
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Commands.html][Manual article on keybindings]]
+** Insert "~"
+On italian keyboards the tidle ("~") is inserted with Alt+5. This command makes it possible to do so.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-5") "~")
+#+END_SRC
+** Insert "#"
+On italian keyboards the pound sign, also called octothorpe or hashtag, ("#") is inserted with Alt+à. This command makes it possible to do so.
+#+BEGIN_SRC 
+(global-set-key (kbd "M-à") "#")
+#+END_SRC
+** Insert "[" and "]"
+On italian keyboards the square parentheses are inserted with Alt+è or Alt++. This command makes it possible to do so.
+#+BEGIN_SRC 
+(global-set-key (kbd "M-è") "[")
+(global-set-key (kbd "M-+") "]")
+#+END_SRC
+** Insert "{" and "}"
+On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. This command makes it possible to do so.
+#+BEGIN_SRC 
+(global-set-key (kbd "M-é") "{")
+(global-set-key (kbd "M-*") "}")
+#+END_SRC

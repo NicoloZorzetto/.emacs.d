@@ -3,17 +3,16 @@
 #+TITLE: Emacs Config
 
 * Packages
-** Initialize
+** Add reos and initialize.
+Adding these 2 repos seems to solve package-install problems in MacOS. Maybe it's only me, but leaving them will not cause problems nor slow down the startup by a lot.
+Melpa is the default one and adding the gnu repo is a bit unorthodox but in Fedora just the first didn't list all packages available so I had to add the latter.
 #+BEGIN_SRC emacs-lisp
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
-#+END_SRC
-** Use-package
-#+BEGIN_SRC emacs-lisp
-(package-install 'use-package)
 #+END_SRC
 
 #+RESULTS:
-: ‘use-package’ is already installed
 
 ** All-the-icons
 Icons package used for the dashboard and maybe something else in the future.
@@ -21,12 +20,30 @@ Icons package used for the dashboard and maybe something else in the future.
 (package-install 'all-the-icons)
 #+END_SRC
 
+#+RESULTS:
+
 ** Elpy
 Elpy is a package that renders Emacs almost a Python IDE.
 #+BEGIN_SRC emacs-lisp
 (package-install 'elpy)
-(require 'elpy)
+;(require 'elpy)
+(elpy-enable)
 #+END_SRC
+
+#+RESULTS:
+
+*** Jupyter's envoirment
+I use Jupyter's live envoirment even inside Emacs because I find it easier to navigate especially when trying to produce literate code.
+#+BEGIN_SRC emacs-lisp
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
+#+END_SRC
+
+#+RESULTS:
+| jupyter | pypy | ipython |
 
 ** Dashboard
 The initial buffer.
@@ -50,13 +67,119 @@ Git client inside emacs.
 
 #+RESULTS:
 | #s(package-desc async (20200113 1745) Asynchronous processing in Emacs ((emacs (24 3))) tar melpa nil ((:commit . 86aef2c38e7d35e8509b7feeee3e989d825eba91) (:keywords async) (:url . https://github.com/jwiegley/emacs-async)) nil) | #s(package-desc with-editor (20200617 1234) Use the Emacsclient as $EDITOR ((emacs (24 4)) (async (1 9))) tar melpa nil ((:commit . 7c512887c6d69864fb600d32fb92857c51babcff) (:keywords tools) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/with-editor)) nil) | #s(package-desc transient (20200707 2034) Transient commands ((emacs (25 1))) tar melpa nil ((:commit . dd9c40adc3eb7f8656c8a17c3c450388610b7986) (:keywords bindings) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/transient)) nil) | #s(package-desc dash (20200524 1947) A modern list library for Emacs nil tar melpa nil ((:commit . 732d92eac56023a4fb4a5dc3d9d4e274ebf44bf9) (:keywords lists) (:authors (Magnar Sveen . magnars@gmail.com)) (:maintainer Magnar Sveen . magnars@gmail.com)) nil) | #s(package-desc git-commit (20200701 2112) Edit Git commit messages ((emacs (25 1)) (dash (20200524)) (transient (20200601)) (with-editor (20200522))) single melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/magit)) nil) | #s(package-desc magit (20200713 2103) A Git porcelain inside Emacs. ((emacs (25 1)) (async (20200113)) (dash (20200524)) (git-commit (20200516)) (transient (20200601)) (with-editor (20200522))) tar melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc)) nil) |
+** Counsel
+#+BEGIN_SRC emacs-lisp
+;(package-install 'consuel)
+#+END_SRC
+
+#+RESULTS:
+
+** Swiper
+#+BEGIN_SRC emacs-lisp
+(package-install 'swiper)
+#+END_SRC
+
+#+RESULTS:
+
+** Ivy
+Interactive search
+#+BEGIN_SRC emacs-lisp
+(package-install 'ivy)
+(ivy-mode 1)
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-x l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+#+END_SRC
+
+#+RESULTS:
+: counsel-minibuffer-history
+
+** Gunplot
+#+BEGIN_SRC emacs-lisp
+(package-install 'gnuplot)
+(require 'gnuplot-mode)
+#+END_SRC
+
+#+RESULTS:
+: gnuplot-mode
 
 * Visual settings
+** Hide the toolbar
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode 0)
+#+END_SRC
+
+#+RESULTS:
+
+** Show line numbers
+I like to see line numbers
+#+BEGIN_SRC emacs-lisp
+(global-display-line-numbers-mode)
+#+END_SRC
+
+#+RESULTS:
+: t
+
+** Visual line mode
+I use visual line mode because this way actions on lines act on visual ones instead of logical ones, making it perfect for line wrapping.
+#+BEGIN_SRC emacs-lisp
+(global-visual-line-mode 1)
+#+END_SRC
+
+#+RESULTS:
+: t
+
 ** [theme] modus-vivendi
 #+BEGIN_SRC emacs-lisp
 (package-install 'modus-vivendi-theme)
 (load-theme 'modus-vivendi t)
 #+END_SRC
+
+#+RESULTS:
+: t
+
+** [theme] zemacs-galileo
+#+BEGIN_SRC emacs-lisp
+(load-file "~/.emacs.d/galileo-themes/galileo-seamen-theme.el")
+#+END_SRC
+
+#+RESULTS:
+: t
+
+* Org-mode settings
+** Agenda settings
+*** Set agenda files
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files (list "~/Documents/org/agenda.org"))
+#+END_SRC
+
+#+RESULTS:
+| ~/Documents/org/agenda.org |
+
+*** Agenda KBD
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-a") 'org-agenda)
+#+END_SRC
+
+#+RESULTS:
+: org-agenda
 
 * Keybindings specific to Italian Keyboards
 Using the Italian keyboard layout and emacs can be troublesome. 
@@ -71,18 +194,18 @@ On italian keyboards the tidle ("~") is inserted with Alt+5. This command makes 
 #+END_SRC
 ** Insert "#"
 On italian keyboards the pound sign, also called octothorpe or hashtag, ("#") is inserted with Alt+à. This command makes it possible to do so.
-#+BEGIN_SRC 
+#+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-à") "#")
 #+END_SRC
 ** Insert "[" and "]"
 On italian keyboards the square parentheses are inserted with Alt+è or Alt++. This command makes it possible to do so.
-#+BEGIN_SRC 
+#+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-è") "[")
 (global-set-key (kbd "M-+") "]")
 #+END_SRC
 ** Insert "{" and "}"
 On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. This command makes it possible to do so.
-#+BEGIN_SRC 
+#+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
 #+END_SRC

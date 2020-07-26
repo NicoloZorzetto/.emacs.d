@@ -1,0 +1,165 @@
+% Created 2020-07-19 Sun 14:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Nicolò Zorzetto}
+\date{\today}
+\title{Emacs Config}
+\hypersetup{
+ pdfauthor={Nicolò Zorzetto},
+ pdftitle={Emacs Config},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+:tangle yes
+
+\section{Packages}
+\label{sec:orgd4c3b42}
+\subsection{Initialize}
+\label{sec:org3572826}
+\begin{verbatim}
+(package-initialize)
+\end{verbatim}
+\subsection{Use-package}
+\label{sec:orgfbd9af5}
+\begin{verbatim}
+(package-install 'use-package)
+\end{verbatim}
+
+\subsection{All-the-icons}
+\label{sec:org5ab706d}
+Icons package used for the dashboard and maybe something else in the future.
+\begin{verbatim}
+(package-install 'all-the-icons)
+\end{verbatim}
+
+\subsection{Elpy}
+\label{sec:org15200bb}
+Elpy is a package that renders Emacs almost a Python IDE.
+\begin{verbatim}
+(package-install 'elpy)
+(require 'elpy)
+\end{verbatim}
+\subsubsection{Jupyter's envoirment}
+\label{sec:orgafcff84}
+I use Jupyter's live envoirment even inside Emacs because I find it easier to navigate especially when trying to produce literate code.
+\begin{verbatim}
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+	     "jupyter")
+\end{verbatim}
+
+\subsection{Dashboard}
+\label{sec:orgc7160e0}
+The initial buffer.
+\begin{verbatim}
+(package-install 'dashboard)
+
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "Welcome back Nicolò")
+;(setq dashboard-startup-banner [VALUE])
+(setq dashboard-center-content t)
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+(setq dashboard-set-footer nil)
+\end{verbatim}
+
+\subsection{Magit}
+\label{sec:orgf881195}
+Git client inside emacs.
+\begin{verbatim}
+(package-install 'magit)
+\end{verbatim}
+
+\section{Visual settings}
+\label{sec:org6fc5b8d}
+\subsection{Show line numbers}
+\label{sec:org612d549}
+I like to see line numbers
+\begin{verbatim}
+(global-display-line-numbers-mode)
+\end{verbatim}
+
+\subsection{Visual line mode}
+\label{sec:org8e980aa}
+I use visual line mode because this way actions on lines act on visual ones instead of logical ones, making it perfect for line wrapping.
+\begin{verbatim}
+(global-visual-line-mode 1)
+\end{verbatim}
+
+\subsection{[theme] modus-vivendi}
+\label{sec:org8d7971b}
+\begin{verbatim}
+(package-install 'modus-vivendi-theme)
+(load-theme 'modus-vivendi t)
+\end{verbatim}
+
+\subsection{[theme] zemacs-galileo}
+\label{sec:org158a48a}
+\begin{verbatim}
+; (load-file "~/.emacs.d/zemacs/zemacs-galileo-theme.el")
+\end{verbatim}
+
+\section{Org-mode settings}
+\label{sec:org73353b0}
+\subsection{Agenda settings}
+\label{sec:org3751bb8}
+\subsubsection{Set agenda files}
+\label{sec:org953e317}
+\begin{verbatim}
+(setq org-agenda-files (list "~/Documents/org/Agenda/agenda.org"))
+\end{verbatim}
+\section{Keybindings specific to Italian Keyboards}
+\label{sec:orgd8270e5}
+Using the Italian keyboard layout and emacs can be troublesome. 
+In GNU/Linux systems these are taken care of by default, with the exception of the tidle ("\textasciitilde{}"),  but in MacOS and Windows(?) they are noy. 
+Leaving these even if you run GNU/Linux should not cause any problem or warning.
+If you use another layout simply put your curson on the "* Keybindings specific to Italian Keyboards" line and press "C-c C-x C-w" to delete the whole entry. This also works with any entry in any org-document.
+\href{https://www.gnu.org/software/emacs/manual/html\_node/elisp/Key-Binding-Commands.html}{Manual article on keybindings}
+\subsection{Insert "\textasciitilde{}"}
+\label{sec:org14ade60}
+On italian keyboards the tidle ("\textasciitilde{}") is inserted with Alt+5. This command makes it possible to do so.
+\begin{verbatim}
+(global-set-key (kbd "M-5") "~")
+\end{verbatim}
+\subsection{Insert "\#"}
+\label{sec:orga858cd0}
+On italian keyboards the pound sign, also called octothorpe or hashtag, ("\#") is inserted with Alt+à. This command makes it possible to do so.
+\begin{verbatim}
+(global-set-key (kbd "M-à") "#")
+\end{verbatim}
+\subsection{Insert "[" and "]"}
+\label{sec:org4a5dbec}
+On italian keyboards the square parentheses are inserted with Alt+è or Alt++. This command makes it possible to do so.
+\begin{verbatim}
+(global-set-key (kbd "M-è") "[")
+(global-set-key (kbd "M-+") "]")
+\end{verbatim}
+\subsection{Insert "\{" and "\}"}
+\label{sec:org1eda247}
+On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. This command makes it possible to do so.
+\begin{verbatim}
+(global-set-key (kbd "M-é") "{")
+(global-set-key (kbd "M-*") "}")
+\end{verbatim}
+\end{document}

@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("agenda-file"
+ (filename . "~/Documents/org/agenda.org")
+ (front-context-string)
+ (rear-context-string . "2020-07-20 Mon>\n")
+ (position . 358))
+("org-init"
+ (filename . "~/.emacs.d/myinit.org")
+ (front-context-string . ":tangle yes\n#+AU")
+ (rear-context-string)
+ (position . 1))
+)

@@ -32,6 +32,7 @@ Elpy is a package that renders Emacs almost a Python IDE.
 
 #+RESULTS:
 
+
 *** Jupyter's envoirment
 I use Jupyter's live envoirment even inside Emacs because I find it easier to navigate especially when trying to produce literate code.
 #+BEGIN_SRC emacs-lisp
@@ -60,6 +61,7 @@ The initial buffer.
 #+END_SRC
 
 ** Magit
+*** Installation
 Git client inside emacs.
 #+BEGIN_SRC emacs-lisp
 (package-install 'magit)
@@ -67,58 +69,138 @@ Git client inside emacs.
 
 #+RESULTS:
 | #s(package-desc async (20200113 1745) Asynchronous processing in Emacs ((emacs (24 3))) tar melpa nil ((:commit . 86aef2c38e7d35e8509b7feeee3e989d825eba91) (:keywords async) (:url . https://github.com/jwiegley/emacs-async)) nil) | #s(package-desc with-editor (20200617 1234) Use the Emacsclient as $EDITOR ((emacs (24 4)) (async (1 9))) tar melpa nil ((:commit . 7c512887c6d69864fb600d32fb92857c51babcff) (:keywords tools) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/with-editor)) nil) | #s(package-desc transient (20200707 2034) Transient commands ((emacs (25 1))) tar melpa nil ((:commit . dd9c40adc3eb7f8656c8a17c3c450388610b7986) (:keywords bindings) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/transient)) nil) | #s(package-desc dash (20200524 1947) A modern list library for Emacs nil tar melpa nil ((:commit . 732d92eac56023a4fb4a5dc3d9d4e274ebf44bf9) (:keywords lists) (:authors (Magnar Sveen . magnars@gmail.com)) (:maintainer Magnar Sveen . magnars@gmail.com)) nil) | #s(package-desc git-commit (20200701 2112) Edit Git commit messages ((emacs (25 1)) (dash (20200524)) (transient (20200601)) (with-editor (20200522))) single melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/magit)) nil) | #s(package-desc magit (20200713 2103) A Git porcelain inside Emacs. ((emacs (25 1)) (async (20200113)) (dash (20200524)) (git-commit (20200516)) (transient (20200601)) (with-editor (20200522))) tar melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc)) nil) |
-** Counsel
+
+*** Keybinding
 #+BEGIN_SRC emacs-lisp
-;(package-install 'consuel)
+(global-set-key (kbd "C-g") 'magit)
 #+END_SRC
 
 #+RESULTS:
+: magit
+
+** Counsel
+#+BEGIN_SRC emacs-lisp
+(package-install 'counsel)
+#+END_SRC
+
+#+RESULTS:
+: ‘counsel’ is already installed
 
 ** Swiper
+Swiper is an an Ivy enhanced Isearch replacement.
 #+BEGIN_SRC emacs-lisp
 (package-install 'swiper)
 #+END_SRC
 
 #+RESULTS:
+*** Keybinding
+I mapped swiper to C-s to fully replace Isearch.
+#+BEGIN_SRC emacs-lisp
+(global-set-key "\C-c C-s" 'swiper)
+#+END_SRC
 
+#+END_SRC
 ** Ivy
-Interactive search
+Ivy is an interactive interface for completion in Emacs. Emacs uses completion mechanism in a variety of contexts: code, menus, commands, variables, functions, etc. Completion entails listing, sorting, filtering, previewing, and applying actions on selected items. When active, ivy-mode completes the selection process by narrowing available choices while previewing in the minibuffer. Selecting the final candidate is either through simple keyboard character inputs or through powerful regular expressions.
+[[https://github.com/Microsoft/ivy][Ivy github repo]]
+[[https://oremacs.com/swiper/][Ivy official documentation]]
+*** Installation
 #+BEGIN_SRC emacs-lisp
 (package-install 'ivy)
-(ivy-mode 1)
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "<f6>") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-(global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
-(global-set-key (kbd "C-x l") 'counsel-locate)
-(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 #+END_SRC
 
 #+RESULTS:
 : counsel-minibuffer-history
+*** Activation
+This activates Ivy.
+#+BEGIN_SRC emacs-lisp
+(ivy-mode 1)
+#+END_SRC
+*** Enable recursive minibuffers
+This allows minibuffer commands while inside the minibuffer.
+I believe my Ivy settings use it quite a bit.
+#+BEGIN_SRC emacs-lisp
+(setq enable-recursive-minibuffers t)
+#+END_SRC
+*** Ivy use virtual buffers
+This adds bookmarks and recent files to 'ivy-switch-buffer'. This adds a bit of initial load time but is pretty useful in my opinion.
+#+BEGIN_SRC emacs-lisp
+(setq ivy-use-virtual-buffers t)
+#+END_SRC
+*** Minibuffer history
+Counsel-minibuffer-history will show the minibuffer commands history. The keybinding only works when inside the minibuffer.
+#+BEGIN_SRC emacs-lisp
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+#+END_SRC
+*** M-x
+Consel-M-x is Ivy's version of 'execute-extended-command'. 
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-x") 'counsel-M-x)
+#+END_SRC
+*** Find file
+Counsel-find-file add Ivy completion to find-file.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+#+END_SRC
+*** Find library
+Consel-find-library opens the minibuffer listing all available libraries (often associated with packages) and lets you search and select one opening it's source code.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+#+END_SRC
+*** Describe function
+Consel-describe-function opens the minibuffer listing all available functions and opens the documentation page for the one you select.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+#+END_SRC
+*** Describe variable
+Consel-describe-variable opens the minibuffer listing all available variables and opens the documentation page for the one you select.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+#+END_SRC
+*** Describe symbol
+Consel-describe-symbol opens the minibuffer listing all available symbols and opens the documentation page for the one you select.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+#+END_SRC
 
+*** Resume
+Ivy-resume allows you to get back where you left the last ivy completion.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<f6>") 'ivy-resume)
+#+END_SRC
 ** Gunplot
+I wanted to plot graphs inside emacs, in particular inside org-mode so that I wouldn't need to get gritty with LaTeX or have to use another program, the gunplot-mode allows me to do just that: plot graphs from org-mode's tables. This comes in extremely useful to me for lab reports, studies and data analysis.
+Having Gunplot installed is required, more about that in the docs found in the github repo.
+[[http://www.gnuplot.info/][Gunplot website]]
+[[https://mkmcc.github.io/software/gnuplot-mode.html][Gunplot-mode github repo]]
+*** Installation
 #+BEGIN_SRC emacs-lisp
 (package-install 'gnuplot)
-(require 'gnuplot-mode)
 #+END_SRC
 
 #+RESULTS:
 : gnuplot-mode
+
+** Writeromm
+I have long wanted a sort of 'zen-mode' for emacs to integrate in my workflow so to have a super minimal and distraction free envoirment to relax while writing or sometimes coding.
+writeroom-mode adds just that to Emacs, emulating the famous OSX editor of the same name. It is not perfect but I believe I can make it more so thru configuration and hooks.
+The repo doesn't appear to be the original but seems to still get updates since the other's last commit is from 2015.
+[[https://github.com/joostkremers/writeroom-mode][Writeroom-mode github repo]]
+*** Installation
+#+BEGIN_SRC emacs-lisp
+(package-install 'writeroom-mode)
+#+END_SRC
+
+#+RESULTS:
+| #s(package-desc visual-fill-column (20200428 816) fill-column for visual-line-mode ((emacs (24 3))) single melpa nil ((:commit . 64d38bc1c00953be05c193c01332a633be67aac2) (:authors (Joost Kremers . joostkremers@fastmail.fm)) (:maintainer Joost Kremers . joostkremers@fastmail.fm) (:url . https://github.com/joostkremers/visual-fill-column)) nil) | #s(package-desc writeroom-mode (20200519 37) Minor mode for distraction-free writing ((emacs (24 1)) (visual-fill-column (1 9))) tar melpa nil ((:commit . 8a226a31a12a9203067094774ba6fd6175793e70) (:keywords text) (:authors (Joost Kremers . joostkremers@fastmail.fm)) (:maintainer Joost Kremers . joostkremers@fastmail.fm) (:url . https://github.com/joostkremers/writeroom-mode)) nil) |
+*** Set keybinding
+This keybinding overrides 'write-file'.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-w") 'writeroom-mode)
+#+END_SRC
+
+#+RESULTS:
+: writeroom-mode
 
 * Visual settings
 ** Hide the toolbar
@@ -129,13 +211,13 @@ Interactive search
 #+RESULTS:
 
 ** Show line numbers
-I like to see line numbers
+When referencing compilers the line numbers come in pretty useful but I hate to see them when in 'writeroom-mode' so I toggle them with this keybinging.
 #+BEGIN_SRC emacs-lisp
-(global-display-line-numbers-mode)
+(global-set-key (kbd "\C-x C-l") 'global-display-line-numbers-mode)
 #+END_SRC
 
 #+RESULTS:
-: t
+: global-display-line-numbers-mode
 
 ** Visual line mode
 I use visual line mode because this way actions on lines act on visual ones instead of logical ones, making it perfect for line wrapping.
@@ -175,11 +257,104 @@ I use visual line mode because this way actions on lines act on visual ones inst
 
 *** Agenda KBD
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x C-a") 'org-agenda)
+(global-set-key "\C-c C-a" 'org-agenda)
 #+END_SRC
 
 #+RESULTS:
 : org-agenda
+
+* WASD mode
+I find the standard Emacs keymap, movement wise, irritating to say the least. Inspired by the keys used to move around in most videogames these settings use Ctrl+WASD to move the cursor.
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Moving-Point.html][Moving point manual page]]
+[[https://www.emacswiki.org/emacs/CategoryKeys][Wiki article on binding keys and how to choose them]]
+** Standard movement
+*** Next line
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-s") 'next-line)
+#+END_SRC
+
+#+RESULTS:
+: next-line
+
+*** Previous line
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-w") 'previous-line)
+#+END_SRC
+
+#+RESULTS:
+: previous-line
+
+*** Next char
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-d") 'right-char)
+#+END_SRC
+
+#+RESULTS:
+: right-char
+
+*** Previous char
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-a") 'previous-char)
+#+END_SRC
+
+#+RESULTS:
+: previous-char
+
+**** Org-remap
+Remapping already set by default keys contained in the org-mode map is a bit tricky, the 'C-a' kbd just wouldn't work in this mode but this piece of code solves the problem.
+#+BEGIN_SRC emacs-lisp
+(define-key org-mode-map (kbd "C-a") nil) ; remove old binding
+(define-key org-mode-map (kbd "C-a") 'left-char)
+#+END_SRC
+
+#+RESULTS:
+: left-char
+** Jumps
+*** Jump to beginning of line
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-q") 'move-beginning-of-line)
+#+END_SRC
+
+#+RESULTS:
+: move-beginning-of-line
+*** Jump to end of line
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-e") 'move-end-of-line)
+#+END_SRC
+
+#+RESULTS:
+: move-end-of-line
+*** Forward word
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-d") 'forward-word)
+#+END_SRC
+
+#+RESULTS:
+: forward-word
+*** Backward word
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-a") 'backward-word)
+#+END_SRC
+**** Org-remap
+Remapping already set by default keys contained in the org-mode map is a bit tricky, the 'M-a' kbd just wouldn't work in this mode but this piece of code solves the problem.
+#+BEGIN_SRC emacs-lisp
+(define-key org-mode-map (kbd "M-a") nil) ; remove old binding
+(define-key org-mode-map (kbd "M-a") 'backward-word)
+#+END_SRC
+#+RESULTS:
+: backward-word
+
+*** Page down
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-M-s") 'scroll-up-command)
+#+END_SRC
+*** Page up
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-M-w") 'scroll-down-command)
+#+END_SRC
+
+#+RESULTS:
+: scroll-down-command
 
 * Keybindings specific to Italian Keyboards
 Using the Italian keyboard layout and emacs can be troublesome. 
@@ -188,24 +363,26 @@ Leaving these even if you run GNU/Linux should not cause any problem or warning.
 If you use another layout simply put your curson on the "* Keybindings specific to Italian Keyboards" line and press "C-c C-x C-w" to delete the whole entry. This also works with any entry in any org-document.
 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Commands.html][Manual article on keybindings]]
 ** Insert "~"
-On italian keyboards the tidle ("~") is inserted with Alt+5. This command makes it possible to do so.
+On italian keyboards the tidle ("~") is inserted with 'Alt+5'. This command makes it possible to do so.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-5") "~")
 #+END_SRC
 ** Insert "#"
-On italian keyboards the pound sign, also called octothorpe or hashtag, ("#") is inserted with Alt+à. This command makes it possible to do so.
+On italian keyboards the pound sign, also called octothorpe or hashtag, ("#") is inserted with 'Alt+à'. This command makes it possible to do so.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-à") "#")
 #+END_SRC
 ** Insert "[" and "]"
-On italian keyboards the square parentheses are inserted with Alt+è or Alt++. This command makes it possible to do so.
+On italian keyboards the square parentheses are inserted with 'Alt+è' or 'Alt++'. This command makes it possible to do so.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-è") "[")
 (global-set-key (kbd "M-+") "]")
 #+END_SRC
 ** Insert "{" and "}"
-On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. This command makes it possible to do so.
+On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'. This command makes it possible to do so.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
 #+END_SRC
+
+

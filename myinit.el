@@ -26,39 +26,45 @@
 
 (package-install 'magit)
 
-;(package-install 'consuel)
+(package-install 'counsel)
 
 (package-install 'swiper)
 
+(global-set-key "\C-c C-s" 'swiper)
+
 (package-install 'ivy)
+
 (ivy-mode 1)
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
+
 (setq enable-recursive-minibuffers t)
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "<f6>") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-(global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
-(global-set-key (kbd "C-x l") 'counsel-locate)
-(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+
+(setq ivy-use-virtual-buffers t)
+
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
+(global-set-key (kbd "M-x") 'counsel-M-x)
+
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+
+(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+
+(global-set-key (kbd "<f6>") 'ivy-resume)
+
 (package-install 'gnuplot)
-(require 'gnuplot-mode)
+
+(package-install 'writeroom-mode)
+
+(global-set-key (kbd "C-x C-w") 'writeroom-mode)
 
 (tool-bar-mode 0)
 
-(global-display-line-numbers-mode)
+(global-set-key (kbd "\C-x C-l") 'global-display-line-numbers-mode)
 
 (global-visual-line-mode 1)
 
@@ -69,7 +75,37 @@
 
 (setq org-agenda-files (list "~/Documents/org/agenda.org"))
 
-(global-set-key (kbd "C-x C-a") 'org-agenda)
+(global-set-key "\C-c C-a" 'org-agenda)
+
+(global-set-key (kbd "C-s") 'next-line)
+(global-set-key (kbd "C-k") 'next-line)
+
+(global-set-key (kbd "C-w") 'previous-line)
+(global-set-key (kbd "C-i") 'previous-line)
+
+(global-set-key (kbd "C-d") 'right-char)
+(global-set-key (kbd "C-l") 'right-char)
+
+(global-set-key (kbd "C-a") 'previous-char)
+(global-set-key (kbd "C-j") 'previous-char)
+
+(define-key org-mode-map (kbd "C-a") nil) ; remove old binding
+(define-key org-mode-map (kbd "C-a") 'left-char)
+
+(global-set-key (kbd "C-q") 'move-beginning-of-line)
+
+(global-set-key (kbd "C-e") 'move-end-of-line)
+
+(global-set-key (kbd "M-d") 'forward-word)
+
+(global-set-key (kbd "M-a") 'backward-word)
+
+(define-key org-mode-map (kbd "M-a") nil) ; remove old binding
+(define-key org-mode-map (kbd "M-a") 'backward-word)
+
+(global-set-key (kbd "C-M-s") 'scroll-up-command)
+
+(global-set-key (kbd "C-M-w") 'scroll-down-command)
 
 (global-set-key (kbd "M-5") "~")
 

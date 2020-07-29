@@ -14,3 +14,9 @@ cd elpa
 ls
 rm -rf gnuplot-mode
 cd ..
+git add .
+git submodule add https://github.com/NicoloZorzetto/galileo-themes.git galileo-themes
+git add .
+ls
+cd galileo-themes/
+ls

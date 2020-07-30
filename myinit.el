@@ -17,14 +17,20 @@
 (package-install 'dashboard)
 
 (dashboard-setup-startup-hook)
+
 (setq dashboard-banner-logo-title "Welcome back Nicolò")
-;(setq dashboard-startup-banner [VALUE])
+
 (setq dashboard-center-content t)
+
 (setq dashboard-set-heading-icons t)
+
 (setq dashboard-set-file-icons t)
+
 (setq dashboard-set-footer nil)
 
 (package-install 'magit)
+
+(global-set-key (kbd "C-g") 'magit)
 
 (package-install 'counsel)
 
@@ -73,39 +79,12 @@
 
 (load-file "~/.emacs.d/galileo-themes/galileo-seamen-theme.el")
 
+(package-install 'material-theme)
+(load-theme 'material t)
+
 (setq org-agenda-files (list "~/Documents/org/agenda.org"))
 
 (global-set-key "\C-c C-a" 'org-agenda)
-
-(global-set-key (kbd "C-s") 'next-line)
-(global-set-key (kbd "C-k") 'next-line)
-
-(global-set-key (kbd "C-w") 'previous-line)
-(global-set-key (kbd "C-i") 'previous-line)
-
-(global-set-key (kbd "C-d") 'right-char)
-(global-set-key (kbd "C-l") 'right-char)
-
-(global-set-key (kbd "C-a") 'previous-char)
-(global-set-key (kbd "C-j") 'previous-char)
-
-(define-key org-mode-map (kbd "C-a") nil) ; remove old binding
-(define-key org-mode-map (kbd "C-a") 'left-char)
-
-(global-set-key (kbd "C-q") 'move-beginning-of-line)
-
-(global-set-key (kbd "C-e") 'move-end-of-line)
-
-(global-set-key (kbd "M-d") 'forward-word)
-
-(global-set-key (kbd "M-a") 'backward-word)
-
-(define-key org-mode-map (kbd "M-a") nil) ; remove old binding
-(define-key org-mode-map (kbd "M-a") 'backward-word)
-
-(global-set-key (kbd "C-M-s") 'scroll-up-command)
-
-(global-set-key (kbd "C-M-w") 'scroll-down-command)
 
 (global-set-key (kbd "M-5") "~")
 

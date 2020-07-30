@@ -48,18 +48,34 @@ I use Jupyter's live envoirment even inside Emacs because I find it easier to na
 
 ** Dashboard
 The initial buffer.
+*** Installation
 #+BEGIN_SRC emacs-lisp
 (package-install 'dashboard)
-
+#+END_SRC
+*** Open it at startup
+#+BEGIN_SRC emacs-lisp
 (dashboard-setup-startup-hook)
+#+END_SRC
+*** Set welcome title
+#+BEGIN_SRC emacs-lisp
 (setq dashboard-banner-logo-title "Welcome back Nicolò")
-;(setq dashboard-startup-banner [VALUE])
+#+END_SRC
+*** Center content
+#+BEGIN_SRC emacs-lisp
 (setq dashboard-center-content t)
+#+END_SRC
+*** Set icons
+#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-heading-icons t)
+#+END_SRC
+*** Set file icons
+#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-file-icons t)
+#+END_SRC
+*** Remove footer
+#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-footer nil)
 #+END_SRC
-
 ** Magit
 *** Installation
 Git client inside emacs.
@@ -79,6 +95,9 @@ Git client inside emacs.
 : magit
 
 ** Counsel
+Consuel is a collection of Ivy enhanced emacs commands.
+[[https://github.com/Microsoft/ivy][Ivy github repo]]
+[[https://oremacs.com/swiper/][Ivy official documentation]]
 #+BEGIN_SRC emacs-lisp
 (package-install 'counsel)
 #+END_SRC
@@ -88,6 +107,8 @@ Git client inside emacs.
 
 ** Swiper
 Swiper is an an Ivy enhanced Isearch replacement.
+[[https://github.com/Microsoft/ivy][Ivy github repo]]
+[[https://oremacs.com/swiper/][Ivy official documentation]]
 #+BEGIN_SRC emacs-lisp
 (package-install 'swiper)
 #+END_SRC
@@ -102,7 +123,7 @@ I mapped swiper to C-s to fully replace Isearch.
 #+END_SRC
 ** Ivy
 Ivy is an interactive interface for completion in Emacs. Emacs uses completion mechanism in a variety of contexts: code, menus, commands, variables, functions, etc. Completion entails listing, sorting, filtering, previewing, and applying actions on selected items. When active, ivy-mode completes the selection process by narrowing available choices while previewing in the minibuffer. Selecting the final candidate is either through simple keyboard character inputs or through powerful regular expressions.
-[[https://github.com/Microsoft/ivy][Ivy github repo]]
+[[https://github.com/Microsoft/ivy][Ivy github repo]
 [[https://oremacs.com/swiper/][Ivy official documentation]]
 *** Installation
 #+BEGIN_SRC emacs-lisp
@@ -245,6 +266,15 @@ I use visual line mode because this way actions on lines act on visual ones inst
 #+RESULTS:
 : t
 
+** [theme] material-theme
+#+BEGIN_SRC emacs-lisp
+(package-install 'material-theme)
+(load-theme 'material t)
+#+END_SRC
+
+#+RESULTS:
+: t
+
 * Org-mode settings
 ** Agenda settings
 *** Set agenda files
@@ -262,99 +292,6 @@ I use visual line mode because this way actions on lines act on visual ones inst
 
 #+RESULTS:
 : org-agenda
-
-* WASD mode
-I find the standard Emacs keymap, movement wise, irritating to say the least. Inspired by the keys used to move around in most videogames these settings use Ctrl+WASD to move the cursor.
-[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Moving-Point.html][Moving point manual page]]
-[[https://www.emacswiki.org/emacs/CategoryKeys][Wiki article on binding keys and how to choose them]]
-** Standard movement
-*** Next line
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-s") 'next-line)
-#+END_SRC
-
-#+RESULTS:
-: next-line
-
-*** Previous line
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-w") 'previous-line)
-#+END_SRC
-
-#+RESULTS:
-: previous-line
-
-*** Next char
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-d") 'right-char)
-#+END_SRC
-
-#+RESULTS:
-: right-char
-
-*** Previous char
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-a") 'previous-char)
-#+END_SRC
-
-#+RESULTS:
-: previous-char
-
-**** Org-remap
-Remapping already set by default keys contained in the org-mode map is a bit tricky, the 'C-a' kbd just wouldn't work in this mode but this piece of code solves the problem.
-#+BEGIN_SRC emacs-lisp
-(define-key org-mode-map (kbd "C-a") nil) ; remove old binding
-(define-key org-mode-map (kbd "C-a") 'left-char)
-#+END_SRC
-
-#+RESULTS:
-: left-char
-** Jumps
-*** Jump to beginning of line
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-q") 'move-beginning-of-line)
-#+END_SRC
-
-#+RESULTS:
-: move-beginning-of-line
-*** Jump to end of line
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-e") 'move-end-of-line)
-#+END_SRC
-
-#+RESULTS:
-: move-end-of-line
-*** Forward word
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "M-d") 'forward-word)
-#+END_SRC
-
-#+RESULTS:
-: forward-word
-*** Backward word
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "M-a") 'backward-word)
-#+END_SRC
-**** Org-remap
-Remapping already set by default keys contained in the org-mode map is a bit tricky, the 'M-a' kbd just wouldn't work in this mode but this piece of code solves the problem.
-#+BEGIN_SRC emacs-lisp
-(define-key org-mode-map (kbd "M-a") nil) ; remove old binding
-(define-key org-mode-map (kbd "M-a") 'backward-word)
-#+END_SRC
-#+RESULTS:
-: backward-word
-
-*** Page down
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-M-s") 'scroll-up-command)
-#+END_SRC
-*** Page up
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-M-w") 'scroll-down-command)
-#+END_SRC
-
-#+RESULTS:
-: scroll-down-command
 
 * Keybindings specific to Italian Keyboards
 Using the Italian keyboard layout and emacs can be troublesome. 

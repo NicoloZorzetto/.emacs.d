@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("agenda-file"
+(("Cypher"
+ (filename . "~/Documents/org/Cypher/")
+ (front-context-string)
+ (rear-context-string . " 9 Jul 29 12:58 ")
+ (position . 242))
+("agenda-file"
  (filename . "~/Documents/org/agenda.org")
  (front-context-string)
  (rear-context-string . "2020-07-20 Mon>\n")

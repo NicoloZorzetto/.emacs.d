@@ -24,6 +24,7 @@ Icons package used for the dashboard and maybe something else in the future.
 
 ** Elpy
 Elpy is a package that renders Emacs almost a Python IDE.
+*** Installation
 #+BEGIN_SRC emacs-lisp
 (package-install 'elpy)
 ;(require 'elpy)
@@ -31,7 +32,6 @@ Elpy is a package that renders Emacs almost a Python IDE.
 #+END_SRC
 
 #+RESULTS:
-
 
 *** Jupyter's envoirment
 I use Jupyter's live envoirment even inside Emacs because I find it easier to navigate especially when trying to produce literate code.

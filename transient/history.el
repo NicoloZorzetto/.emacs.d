@@ -1,4 +1,3 @@
 ((magit-commit nil)
- (magit-push
-  ("--force-with-lease" "--force")
-  nil))
+ (magit-push nil
+	     ("--force-with-lease" "--force")))

@@ -1,23 +1,128 @@
-shutdown now
-git clone https://github.com/mkmcc/gnuplot-mode
-ls
-cd elpy/
+cd
+cd blog/
+python manage.py runserver
+python manage.py runserver
+python manage.py runserver
+django-admin startproject blog
 cd ..
-cd elpa
+cd blog/
 ls
-mkdir gunplot-mode
+rm -rf *
+ls
+django-admin
+pip uninstall Django
+yay -R python-django
+yay -R python-django
+sudo pacman -R django
+sudo pacman -R python-django
+yay -R Django
+yay -S python-django
+yay -S python-django
+sudo yay -R django
+sudo yay -R python-django
+rm -rf /usr/bin/django-admin.py
+sudo rm -rf /usr/bin/django-admin.py
+yay -S python-django
+django-admin
+django-admin startproject blog
+ls
+cd blog/
+python3 -m venv ven 
+python3 -m venv venv
+. venv/bin/activate
+make
+cd
+cd zerver-c/
+make
+sudo make install
+main
+sudo make install
+main
+sudo make install
+main
+gdb
+gbd main.c
+gdb main.c
+clea
+clear
+ls
+sudo make install
+main
+sudo make install
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+make
+sudo make install
+main
+main r
+main -r
+main -r
+main 
+r
+main r
+main 3
+main -r
+gcc main -o main
+gcc main -o maincompiled
+./maincompiled -r
+ls
+ls -a
+gcc main.c -o maincomp
+ls
+ls -a
+./maincomp -r
+./maincomp
+gcc main.c -o maincomp
+./maincomp
+./maincomp -r
+gcc main.c -o maincomp
+./maincomp -r
+sudo make install
+main -r
+make
+make
+make
+sudo make install
+main -rs
+main -r
+python main.py
+python main.py
+rm -rf .zynch/
+python main.py
+python main.py
+rm -rf .zynch/
+python main.py
+cd something/so/
+ls
 cd ..
-cd gnuplot-mode/
 cd ..
-rm -rf gnuplot-mode/
-cd elpa
 ls
-rm -rf gnuplot-mode
-cd ..
-git add .
-git submodule add https://github.com/NicoloZorzetto/galileo-themes.git galileo-themes
-git add .
+rm -rf .zynch/
+python main.py
+python main.py
+python main.py
 ls
-cd galileo-themes/
-ls
-shutdown now
+python3 main.py
+python3 main.py
+ls -a
+rm -rf .zynch/
+python3 main.py
+python3 main.py
+python3 main.py
+ll
+sudo pacman -S ll
+ls -R
+ls -l
+ls -ll
+tree
+sudo pacman -S tree
+tree
+python3 dirlist.py

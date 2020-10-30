@@ -14,6 +14,15 @@ Melpa is the default one and adding the gnu repo is a bit unorthodox but in Fedo
 
 #+RESULTS:
 
+** Use package
+The use-package macro allows you to isolate package configuration in your .emacs file in a way that is both performance-oriented and, well, tidy. I created it because I have over 80 packages that I use in Emacs, and things were getting difficult to manage. Yet with this utility my total load time is around 2 seconds, with no loss of functionality!
+#+BEGIN_SRC emacs-lisp
+(package-install 'use-package)
+#+END_SRC
+
+#+RESULTS:
+: ‘use-package’ is already installed
+
 ** All-the-icons
 Icons package used for the dashboard and maybe something else in the future.
 #+BEGIN_SRC emacs-lisp
@@ -24,75 +33,50 @@ Icons package used for the dashboard and maybe something else in the future.
 
 ** Elpy
 Elpy is a package that renders Emacs almost a Python IDE.
-*** Installation
 #+BEGIN_SRC emacs-lisp
-(package-install 'elpy)
-;(require 'elpy)
-(elpy-enable)
-#+END_SRC
-
-#+RESULTS:
-
-*** Jupyter's envoirment
-I use Jupyter's live envoirment even inside Emacs because I find it easier to navigate especially when trying to produce literate code.
-#+BEGIN_SRC emacs-lisp
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
+(use-package elpy
+:config
+;; Hook to start elpy when in python mode (visiting a python file or buffer)
+(add-hook 'python-mode-hook (lambda ()
+(elpy-enable)))
+;; Set Ipython's envoirment
+;; (setq python-shell-interpreter "jupyter"
+;; python-shell-interpreter-args "console --simple-prompt"
+;; python-shell-prompt-detect-failure-warning nil)
 (add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
+"jupyter")
+(elpy-enable))
+
 #+END_SRC
 
 #+RESULTS:
-| jupyter | pypy | ipython |
+: t
 
 ** Dashboard
 The initial buffer.
-*** Installation
 #+BEGIN_SRC emacs-lisp
-(package-install 'dashboard)
-#+END_SRC
-*** Open it at startup
-#+BEGIN_SRC emacs-lisp
-(dashboard-setup-startup-hook)
-#+END_SRC
-*** Set welcome title
-#+BEGIN_SRC emacs-lisp
-(setq dashboard-banner-logo-title "Welcome back Nicolò")
-#+END_SRC
-*** Center content
-#+BEGIN_SRC emacs-lisp
+(use-package dashboard
+:config
+(setq dashboard-banner-logo-title "Welcome back, Nicolò")
 (setq dashboard-center-content t)
-#+END_SRC
-*** Set icons
-#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-heading-icons t)
-#+END_SRC
-*** Set file icons
-#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-file-icons t)
-#+END_SRC
-*** Remove footer
-#+BEGIN_SRC emacs-lisp
 (setq dashboard-set-footer nil)
+(dashboard-setup-startup-hook))
 #+END_SRC
+
+#+RESULTS:
+: t
+
 ** Magit
-*** Installation
-Git client inside emacs.
+
 #+BEGIN_SRC emacs-lisp
-(package-install 'magit)
+(use-package magit
+:config
+(global-set-key (kbd "C-g") 'magit))
 #+END_SRC
 
 #+RESULTS:
-| #s(package-desc async (20200113 1745) Asynchronous processing in Emacs ((emacs (24 3))) tar melpa nil ((:commit . 86aef2c38e7d35e8509b7feeee3e989d825eba91) (:keywords async) (:url . https://github.com/jwiegley/emacs-async)) nil) | #s(package-desc with-editor (20200617 1234) Use the Emacsclient as $EDITOR ((emacs (24 4)) (async (1 9))) tar melpa nil ((:commit . 7c512887c6d69864fb600d32fb92857c51babcff) (:keywords tools) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/with-editor)) nil) | #s(package-desc transient (20200707 2034) Transient commands ((emacs (25 1))) tar melpa nil ((:commit . dd9c40adc3eb7f8656c8a17c3c450388610b7986) (:keywords bindings) (:authors (Jonas Bernoulli . jonas@bernoul.li)) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/transient)) nil) | #s(package-desc dash (20200524 1947) A modern list library for Emacs nil tar melpa nil ((:commit . 732d92eac56023a4fb4a5dc3d9d4e274ebf44bf9) (:keywords lists) (:authors (Magnar Sveen . magnars@gmail.com)) (:maintainer Magnar Sveen . magnars@gmail.com)) nil) | #s(package-desc git-commit (20200701 2112) Edit Git commit messages ((emacs (25 1)) (dash (20200524)) (transient (20200601)) (with-editor (20200522))) single melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc) (:maintainer Jonas Bernoulli . jonas@bernoul.li) (:url . https://github.com/magit/magit)) nil) | #s(package-desc magit (20200713 2103) A Git porcelain inside Emacs. ((emacs (25 1)) (async (20200113)) (dash (20200524)) (git-commit (20200516)) (transient (20200601)) (with-editor (20200522))) tar melpa nil ((:commit . dc8a24b4cdb4c6371d3f52a5105f9887bbcc371b) (:keywords git tools vc)) nil) |
-
-*** Keybinding
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-g") 'magit)
-#+END_SRC
-
-#+RESULTS:
-: magit
 
 ** Counsel
 Consuel is a collection of Ivy enhanced emacs commands.
@@ -110,97 +94,44 @@ Swiper is an an Ivy enhanced Isearch replacement.
 [[https://github.com/Microsoft/ivy][Ivy github repo]]
 [[https://oremacs.com/swiper/][Ivy official documentation]]
 #+BEGIN_SRC emacs-lisp
-(package-install 'swiper)
-#+END_SRC
-
-#+RESULTS:
-*** Keybinding
-I mapped swiper to C-s to fully replace Isearch.
-#+BEGIN_SRC emacs-lisp
-(global-set-key "\C-c C-s" 'swiper)
-#+END_SRC
-
+(use-package swiper
+:config
+(global-set-key (kbd "C-s") 'swiper))
 #+END_SRC
 ** Ivy
 Ivy is an interactive interface for completion in Emacs. Emacs uses completion mechanism in a variety of contexts: code, menus, commands, variables, functions, etc. Completion entails listing, sorting, filtering, previewing, and applying actions on selected items. When active, ivy-mode completes the selection process by narrowing available choices while previewing in the minibuffer. Selecting the final candidate is either through simple keyboard character inputs or through powerful regular expressions.
 [[https://github.com/Microsoft/ivy][Ivy github repo]
 [[https://oremacs.com/swiper/][Ivy official documentation]]
-*** Installation
 #+BEGIN_SRC emacs-lisp
-(package-install 'ivy)
-#+END_SRC
-
-#+RESULTS:
-: counsel-minibuffer-history
-*** Activation
-This activates Ivy.
-#+BEGIN_SRC emacs-lisp
-(ivy-mode 1)
-#+END_SRC
-*** Enable recursive minibuffers
-This allows minibuffer commands while inside the minibuffer.
-I believe my Ivy settings use it quite a bit.
-#+BEGIN_SRC emacs-lisp
+(use-package ivy
+:config
+;; This allows minibuffer commands while inside the minibuffer. I believe my Ivy settings use it quite a bit.
 (setq enable-recursive-minibuffers t)
-#+END_SRC
-*** Ivy use virtual buffers
-This adds bookmarks and recent files to 'ivy-switch-buffer'. This adds a bit of initial load time but is pretty useful in my opinion.
-#+BEGIN_SRC emacs-lisp
+;; This adds bookmarks and recent files to 'ivy-switch-buffer'. This adds a bit of initial load time but is pretty useful in my opinion.
 (setq ivy-use-virtual-buffers t)
-#+END_SRC
-*** Minibuffer history
-Counsel-minibuffer-history will show the minibuffer commands history. The keybinding only works when inside the minibuffer.
-#+BEGIN_SRC emacs-lisp
+;; Counsel-minibuffer-history will show the minibuffer commands history. The keybinding only works when inside the minibuffer.
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-#+END_SRC
-*** M-x
-Consel-M-x is Ivy's version of 'execute-extended-command'. 
-#+BEGIN_SRC emacs-lisp
+;; Consel-M-x is Ivy's version of 'execute-extended-command'. 
 (global-set-key (kbd "M-x") 'counsel-M-x)
-#+END_SRC
-*** Find file
-Counsel-find-file add Ivy completion to find-file.
-#+BEGIN_SRC emacs-lisp
+;; Counsel-find-file add Ivy completion to find-file.
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-#+END_SRC
-*** Find library
-Consel-find-library opens the minibuffer listing all available libraries (often associated with packages) and lets you search and select one opening it's source code.
-#+BEGIN_SRC emacs-lisp
+;; Consel-find-library opens the minibuffer listing all available libraries (often associated with packages) and lets you search and select one opening it's source code.
 (global-set-key (kbd "<f1> l") 'counsel-find-library)
-#+END_SRC
-*** Describe function
-Consel-describe-function opens the minibuffer listing all available functions and opens the documentation page for the one you select.
-#+BEGIN_SRC emacs-lisp
+;; Consel-describe-function opens the minibuffer listing all available functions and opens the documentation page for the one you select.
 (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-#+END_SRC
-*** Describe variable
-Consel-describe-variable opens the minibuffer listing all available variables and opens the documentation page for the one you select.
-#+BEGIN_SRC emacs-lisp
+;; Consel-describe-variable opens the minibuffer listing all available variables and opens the documentation page for the one you select.
 (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-#+END_SRC
-*** Describe symbol
-Consel-describe-symbol opens the minibuffer listing all available symbols and opens the documentation page for the one you select.
-#+BEGIN_SRC emacs-lisp
+;; Consel-describe-symbol opens the minibuffer listing all available symbols and opens the documentation page for the one you select.
 (global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-#+END_SRC
-
-*** Resume
-Ivy-resume allows you to get back where you left the last ivy completion.
-#+BEGIN_SRC emacs-lisp
+;; Ivy-resume allows you to get back where you left the last ivy completion.
 (global-set-key (kbd "<f6>") 'ivy-resume)
-#+END_SRC
-** Gunplot
-I wanted to plot graphs inside emacs, in particular inside org-mode so that I wouldn't need to get gritty with LaTeX or have to use another program, the gunplot-mode allows me to do just that: plot graphs from org-mode's tables. This comes in extremely useful to me for lab reports, studies and data analysis.
-Having Gunplot installed is required, more about that in the docs found in the github repo.
-[[http://www.gnuplot.info/][Gunplot website]]
-[[https://mkmcc.github.io/software/gnuplot-mode.html][Gunplot-mode github repo]]
-*** Installation
-#+BEGIN_SRC emacs-lisp
-(package-install 'gnuplot)
+:init
+;; This activates Ivy
+(ivy-mode 1))
 #+END_SRC
 
 #+RESULTS:
-: gnuplot-mode
+: t
 
 ** Writeromm
 I have long wanted a sort of 'zen-mode' for emacs to integrate in my workflow so to have a super minimal and distraction free envoirment to relax while writing or sometimes coding.
@@ -209,21 +140,79 @@ The repo doesn't appear to be the original but seems to still get updates since 
 [[https://github.com/joostkremers/writeroom-mode][Writeroom-mode github repo]]
 *** Installation
 #+BEGIN_SRC emacs-lisp
-(package-install 'writeroom-mode)
+(use-package writeroom-mode
+:config
+(global-set-key (kbd "C-x C-w") 'writeroom-mode))
 #+END_SRC
 
 #+RESULTS:
-| #s(package-desc visual-fill-column (20200428 816) fill-column for visual-line-mode ((emacs (24 3))) single melpa nil ((:commit . 64d38bc1c00953be05c193c01332a633be67aac2) (:authors (Joost Kremers . joostkremers@fastmail.fm)) (:maintainer Joost Kremers . joostkremers@fastmail.fm) (:url . https://github.com/joostkremers/visual-fill-column)) nil) | #s(package-desc writeroom-mode (20200519 37) Minor mode for distraction-free writing ((emacs (24 1)) (visual-fill-column (1 9))) tar melpa nil ((:commit . 8a226a31a12a9203067094774ba6fd6175793e70) (:keywords text) (:authors (Joost Kremers . joostkremers@fastmail.fm)) (:maintainer Joost Kremers . joostkremers@fastmail.fm) (:url . https://github.com/joostkremers/writeroom-mode)) nil) |
-*** Set keybinding
-This keybinding overrides 'write-file'.
+: t
+
+** PDF tools
+PDF-tools is a package that let's you view PDF files (and more) inside Emacs.
+Midnight mode actively changes the colors of PDFs to be homougenous with the theme you have loaded. 
+I added a hook to activate it automatically since I use pdf-tools mainly to read books or documents. If you need to see the original colors just disable it manually with < /C-c C-r m/ >.
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x C-w") 'writeroom-mode)
+(use-package pdf-tools
+:config
+(add-hook 'PDFView-mode-hook (lambda ()
+                                (pdf-view-midnight-minor-mode)))
+(pdf-tools-install))
 #+END_SRC
 
 #+RESULTS:
-: writeroom-mode
+: t
+
+** EMMS
+EMMS is a super minimalistic music player inside emacs. It is standardly launched with the command < /M-x RET emms RET/ >.
+#+BEGIN_SRC emacs-lisp
+(package-install 'emms)
+
+(use-package emms
+:config 
+;;Midnight mode actively changes the colors of PDFs to be homougenous with the theme you have loaded. I added a hook to activate it automatically since I use pdf-tools mainly to read books or documents. If you need to see the original colors just disable it manually with < /C-c C-r m/ >.
+(global-set-key (kbd "C-c C-x C-e") 'emms)
+;; I have binded /add directory/ to < /C-c C-+/ >. This function opens the minubuffer prompting for a directory and add to emms all music files contained in it.
+(global-set-key (kbd "C-c C-+") 'emms-add-directory)
+;; Player config
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(add-to-list 'load-path "~/.emacs.d/site-lisp/emms/lisp")
+(require 'emms-setup)
+(require 'emms-player-mplayer)
+(emms-standard)
+(emms-default-players)
+(define-emms-simple-player mplayer '(file url)
+      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+                    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+                    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+      "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen"))
+#+END_SRC
+
+#+RESULTS:
+: t
+** Flycheck
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+:config
+(add-hook 'after-init-hook #'global-flycheck-mode))
+#+END_SRC
+** Eshell
+I often use eshell, this keybinding is just to call it quickly.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-e") 'eshell)
+#+END_SRC 
+
+#+RESULTS:
+: eshell
 
 * Visual settings
+** Hide the menubar
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode 0)
+#+END_SRC
+
+#+RESULTS:
+
 ** Hide the toolbar
 #+BEGIN_SRC emacs-lisp
 (tool-bar-mode 0)
@@ -231,17 +220,17 @@ This keybinding overrides 'write-file'.
 
 #+RESULTS:
 
-** Show line numbers
-When referencing compilers the line numbers come in pretty useful but I hate to see them when in 'writeroom-mode' so I toggle them with this keybinging.
+** Show line numbers (kbd toggle)
+Line numbers are not shown by default so I added a toggle keybinding to show/hide them with < /C-x C-l/ >
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "\C-x C-l") 'global-display-line-numbers-mode)
+(global-set-key (kbd "C-x C-l") 'global-display-line-numbers-mode)
 #+END_SRC
 
 #+RESULTS:
 : global-display-line-numbers-mode
 
 ** Visual line mode
-I use visual line mode because this way actions on lines act on visual ones instead of logical ones, making it perfect for line wrapping.
+Visual line mode makes line-dependent commands act on visual lines instead of logical ones (so separating wrapped lines). 
 #+BEGIN_SRC emacs-lisp
 (global-visual-line-mode 1)
 #+END_SRC
@@ -249,27 +238,10 @@ I use visual line mode because this way actions on lines act on visual ones inst
 #+RESULTS:
 : t
 
-** [theme] modus-vivendi
+** [theme] spacemacs-dark
+Simple and pretty minimal theme that works well with my DWM config.
 #+BEGIN_SRC emacs-lisp
-(package-install 'modus-vivendi-theme)
-(load-theme 'modus-vivendi t)
-#+END_SRC
-
-#+RESULTS:
-: t
-
-** [theme] zemacs-galileo
-#+BEGIN_SRC emacs-lisp
-(load-file "~/.emacs.d/galileo-themes/galileo-seamen-theme.el")
-#+END_SRC
-
-#+RESULTS:
-: t
-
-** [theme] material-theme
-#+BEGIN_SRC emacs-lisp
-(package-install 'material-theme)
-(load-theme 'material t)
+(load-theme 'minimal-black t)
 #+END_SRC
 
 #+RESULTS:
@@ -279,15 +251,15 @@ I use visual line mode because this way actions on lines act on visual ones inst
 ** Agenda settings
 *** Set agenda files
 #+BEGIN_SRC emacs-lisp
-(setq org-agenda-files (list "~/Documents/org/agenda.org"))
+(setq org-agenda-files (list "~/Documents/org/"))
 #+END_SRC
 
 #+RESULTS:
-| ~/Documents/org/agenda.org |
+| ~/Documents/org/ |
 
 *** Agenda KBD
 #+BEGIN_SRC emacs-lisp
-(global-set-key "\C-c C-a" 'org-agenda)
+(global-set-key (kbd "C-x C-a") 'org-agenda)
 #+END_SRC
 
 #+RESULTS:
@@ -322,4 +294,7 @@ On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'
 (global-set-key (kbd "M-*") "}")
 #+END_SRC
 
-
+* MISC
+#+BEGIN_SRC emacs-lisp
+; (load-file "~/.emacs.d/elegant-emacs/elegant.el")
+#+END_SRC

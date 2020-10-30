@@ -1,0 +1,9 @@
+;;; .emms-cache -*- mode: emacs-lisp; coding: utf-8; -*-
+(puthash "/home/nicolo/Music/4-Seasons-Vivaldi.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/4-Seasons-Vivaldi.mp3") (info-mtime 24383 49545 531433 972000) (last-played 24383 62939 562540 713000) (play-count . 1)) emms-cache-db)
+(puthash "/home/nicolo/Music/Vivaldi/4-stagioni.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Vivaldi/4-stagioni.mp3") (info-mtime 24383 63677 874817 884000)) emms-cache-db)
+(puthash "/home/nicolo/Music/Mozart/il-meglio-di-Mozart.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Mozart/il-meglio-di-Mozart.mp3") (info-mtime 24383 64536 588120 490000)) emms-cache-db)
+(puthash "/home/nicolo/Music/Mozart/sinfonia-numero-40-G-minore.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Mozart/sinfonia-numero-40-G-minore.mp3") (info-mtime 24383 64438 784790 780000) (last-played 24385 33138 697600 358000) (play-count . 1)) emms-cache-db)
+(puthash "/home/nicolo/Music/Bach/il-meglio-di-Bach.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Bach/il-meglio-di-Bach.mp3") (info-mtime 24383 64498 671455 235000) (last-played 24385 33365 637093 773000) (play-count . 3)) emms-cache-db)
+(puthash "/home/nicolo/Music/Paganini/Paganini-concerti-per-violino.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Paganini/Paganini-concerti-per-violino.mp3") (info-mtime 24383 63607 891487 80000) (last-played 24411 28695 24322 813000) (play-count . 2)) emms-cache-db)
+(puthash "/home/nicolo/Music/Paganini/il-meglio-di-Paganini.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Paganini/il-meglio-di-Paganini.mp3") (info-mtime 24383 63652 88152 120000)) emms-cache-db)
+(puthash "/home/nicolo/Music/Paganini/la-suonata-del-diavolo.mp3" '(*track* (type . file) (name . "/home/nicolo/Music/Paganini/la-suonata-del-diavolo.mp3") (info-mtime 24383 63789 131480 658000)) emms-cache-db)

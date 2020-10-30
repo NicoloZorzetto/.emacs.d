@@ -1,0 +1,21 @@
+;;; -*- coding: utf-8 -*-
+(("/home/nicolo/Documents/org/agenda.org" . 636)
+ ("/home/nicolo/.emacs.d/myinit.org" . 8807)
+ ("/home/nicolo/.emacs.d/recentf" . 1318)
+ ("/home/nicolo/melpa/recipes/elegant-emacs" . 169)
+ ("/home/nicolo/.emacs.d/elegant-emacs/elegant-emacs-common.el" . 13477)
+ ("/home/nicolo/.emacs.d/elegant-emacs/elegant-emacs-light-theme.el" . 1809)
+ ("/home/nicolo/.emacs.d/elegant-emacs/elegant-emacs-dark-theme.el" . 1066)
+ ("/home/nicolo/.emacse.d/elegant-emacs/elegant-emacs-common.el" . 2507)
+ ("/home/nicolo/.emacs.d/elpa/elegant-emacs-20200827.1235/elegant-emacs-autoloads.el" . 1170)
+ ("/home/nicolo/.emacs.d/elegant-emacs/"
+  (dired-filename . "/home/nicolo/.emacs.d/elegant-emacs/elegant-emacs-common.el"))
+ ("/home/nicolo/.emacs.d/elpa/elegant-emacs-20200805.1051/elegant-emacs-autoloads.el" . 1170)
+ ("/home/nicolo/Documents/test/python.py" . 269)
+ ("/home/nicolo/Documents/Bibliotech/Lessico-Familiare-N-Ginzburg.pdf" . 16)
+ ("/home/nicolo/.emacs.d/elpa/jupyter-20200417.1907/jupyter-autoloads.el" . 22448)
+ ("/home/nicolo/.emacs.d/elpa/zmq-20200305.2345/zmq-autoloads.el" . 442)
+ ("/home/nicolo/.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd-autoloads.el" . 1024)
+ ("/home/nicolo/.emacs.d/elpa/websocket-20200419.2124/websocket-autoloads.el" . 416)
+ ("/home/nicolo/Documents/org/"
+  (dired-filename . "/home/nicolo/Documents/org/agenda.org")))

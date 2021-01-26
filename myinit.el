@@ -119,5 +119,3 @@
 
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
-
-; (load-file "~/.emacs.d/elegant-emacs/elegant.el")

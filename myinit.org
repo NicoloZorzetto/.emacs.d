@@ -53,8 +53,8 @@ The initial buffer.
 (setq dashboard-center-content t)
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
-(setq dashboard-set-footer nil)
-(dashboard-setup-startup-hook))
+(setq dashboard-set-footer nil))
+;dashboard-setup-startup-hook))
 #+END_SRC
 
 #+RESULTS:

@@ -1,6 +1,3 @@
-cd ..
-cd blog/
-ls
 rm -rf *
 ls
 django-admin
@@ -126,3 +123,6 @@ sudo vim something..py
 htop
 brew install htop
 sudo htop
+yay -S downgrader-git
+man downgrade
+clear 1

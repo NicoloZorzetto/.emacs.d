@@ -23,14 +23,6 @@ The use-package macro allows you to isolate package configuration in your .emacs
 #+RESULTS:
 : ‘use-package’ is already installed
 
-** All-the-icons
-Icons package used for the dashboard and maybe something else in the future.
-#+BEGIN_SRC emacs-lisp
-(package-install 'all-the-icons)
-#+END_SRC
-
-#+RESULTS:
-
 ** Elpy
 Elpy is a package that renders Emacs almost a Python IDE.
 #+BEGIN_SRC emacs-lisp
@@ -78,27 +70,8 @@ The initial buffer.
 
 #+RESULTS:
 
-** Counsel
-Consuel is a collection of Ivy enhanced emacs commands.
-[[https://github.com/Microsoft/ivy][Ivy github repo]]
-[[https://oremacs.com/swiper/][Ivy official documentation]]
-#+BEGIN_SRC emacs-lisp
-(package-install 'counsel)
-#+END_SRC
-
-#+RESULTS:
-: ‘counsel’ is already installed
-
-** Swiper
-Swiper is an an Ivy enhanced Isearch replacement.
-[[https://github.com/Microsoft/ivy][Ivy github repo]]
-[[https://oremacs.com/swiper/][Ivy official documentation]]
-#+BEGIN_SRC emacs-lisp
-(use-package swiper
-:config
-(global-set-key (kbd "C-s") 'swiper))
-#+END_SRC
 ** Ivy
+*** Ivy
 Ivy is an interactive interface for completion in Emacs. Emacs uses completion mechanism in a variety of contexts: code, menus, commands, variables, functions, etc. Completion entails listing, sorting, filtering, previewing, and applying actions on selected items. When active, ivy-mode completes the selection process by narrowing available choices while previewing in the minibuffer. Selecting the final candidate is either through simple keyboard character inputs or through powerful regular expressions.
 [[https://github.com/Microsoft/ivy][Ivy github repo]
 [[https://oremacs.com/swiper/][Ivy official documentation]]
@@ -133,6 +106,26 @@ Ivy is an interactive interface for completion in Emacs. Emacs uses completion m
 #+RESULTS:
 : t
 
+*** Counsel
+Consuel is a collection of Ivy enhanced emacs commands.
+[[https://github.com/Microsoft/ivy][Ivy github repo]]
+[[https://oremacs.com/swiper/][Ivy official documentation]]
+#+BEGIN_SRC emacs-lisp
+(package-install 'counsel)
+#+END_SRC
+
+#+RESULTS:
+: ‘counsel’ is already installed
+
+*** Swiper
+Swiper is an an Ivy enhanced Isearch replacement.
+[[https://github.com/Microsoft/ivy][Ivy github repo]]
+[[https://oremacs.com/swiper/][Ivy official documentation]]
+#+BEGIN_SRC emacs-lisp
+(use-package swiper
+:config
+(global-set-key (kbd "C-s") 'swiper))
+#+END_SRC
 ** Writeromm
 I have long wanted a sort of 'zen-mode' for emacs to integrate in my workflow so to have a super minimal and distraction free envoirment to relax while writing or sometimes coding.
 writeroom-mode adds just that to Emacs, emulating the famous OSX editor of the same name. It is not perfect but I believe I can make it more so thru configuration and hooks.
@@ -190,12 +183,6 @@ EMMS is a super minimalistic music player inside emacs. It is standardly launche
 
 #+RESULTS:
 : t
-** Flycheck
-#+BEGIN_SRC emacs-lisp
-(use-package flycheck
-:config
-(add-hook 'after-init-hook #'global-flycheck-mode))
-#+END_SRC
 ** Eshell
 I often use eshell, this keybinding is just to call it quickly.
 #+BEGIN_SRC emacs-lisp
@@ -241,7 +228,7 @@ Visual line mode makes line-dependent commands act on visual lines instead of lo
 ** [theme] spacemacs-dark
 Simple and pretty minimal theme that works well with my DWM config.
 #+BEGIN_SRC emacs-lisp
-(load-theme 'minimal-black t)
+(load-theme 'poet-dark t)
 #+END_SRC
 
 #+RESULTS:
@@ -251,11 +238,12 @@ Simple and pretty minimal theme that works well with my DWM config.
 ** Agenda settings
 *** Set agenda files
 #+BEGIN_SRC emacs-lisp
-(setq org-agenda-files (list "~/Documents/org/"))
+(require 'org)
+(setq org-agenda-files (list "~/Documents/org/agenda.org"))
 #+END_SRC
 
 #+RESULTS:
-| ~/Documents/org/ |
+: ~/Documents/org/agenda.org
 
 *** Agenda KBD
 #+BEGIN_SRC emacs-lisp
@@ -292,9 +280,4 @@ On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
-#+END_SRC
-
-* MISC
-#+BEGIN_SRC emacs-lisp
-; (load-file "~/.emacs.d/elegant-emacs/elegant.el")
 #+END_SRC

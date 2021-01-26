@@ -4,8 +4,6 @@
 
 (package-install 'use-package)
 
-(package-install 'all-the-icons)
-
 (use-package elpy
 :config
 ;; Hook to start elpy when in python mode (visiting a python file or buffer)
@@ -32,12 +30,6 @@
 :config
 (global-set-key (kbd "C-g") 'magit))
 
-(package-install 'counsel)
-
-(use-package swiper
-:config
-(global-set-key (kbd "C-s") 'swiper))
-
 (use-package ivy
 :config
 ;; This allows minibuffer commands while inside the minibuffer. I believe my Ivy settings use it quite a bit.
@@ -63,6 +55,12 @@
 :init
 ;; This activates Ivy
 (ivy-mode 1))
+
+(package-install 'counsel)
+
+(use-package swiper
+:config
+(global-set-key (kbd "C-s") 'swiper))
 
 (use-package writeroom-mode
 :config
@@ -95,10 +93,6 @@
                     ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
       "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen"))
 
-(use-package flycheck
-:config
-(add-hook 'after-init-hook #'global-flycheck-mode))
-
 (global-set-key (kbd "C-x C-e") 'eshell)
 
 (menu-bar-mode 0)
@@ -109,9 +103,10 @@
 
 (global-visual-line-mode 1)
 
-(load-theme 'minimal-black t)
+(load-theme 'poet-dark t)
 
-(setq org-agenda-files (list "~/Documents/org/"))
+(require 'org)
+(setq org-agenda-files (list "~/Documents/org/agenda.org"))
 
 (global-set-key (kbd "C-x C-a") 'org-agenda)
 

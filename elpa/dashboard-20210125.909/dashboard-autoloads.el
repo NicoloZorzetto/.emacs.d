@@ -12,9 +12,7 @@
 (autoload 'dashboard-setup-startup-hook "dashboard" "\
 Setup post initialization hooks.
 If a command line argument is provided,
-assume a filename and skip displaying Dashboard.
-
-\(fn)" nil nil)
+assume a filename and skip displaying Dashboard." nil nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dashboard" '("dashboard-")))
 
@@ -24,7 +22,7 @@ assume a filename and skip displaying Dashboard.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from dashboard-widgets.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dashboard-widgets" '("dashboard-" "recentf-list")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dashboard-widgets" '("dashboard-" "org-" "recentf-list")))
 
 ;;;***
 

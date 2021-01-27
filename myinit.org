@@ -26,19 +26,19 @@ The use-package macro allows you to isolate package configuration in your .emacs
 ** Elpy
 Elpy is a package that renders Emacs almost a Python IDE.
 #+BEGIN_SRC emacs-lisp
-(use-package elpy
-:config
-;; Hook to start elpy when in python mode (visiting a python file or buffer)
-(add-hook 'python-mode-hook (lambda ()
-(elpy-enable)))
-;; Set Ipython's envoirment
-;; (setq python-shell-interpreter "jupyter"
-;; python-shell-interpreter-args "console --simple-prompt"
-;; python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-"jupyter")
-(elpy-enable))
-
+  (use-package elpy
+  ;; :config
+  ;; ;; Hook to start elpy when in python mode (visiting a python file or buffer)
+  ;; (add-hook 'python-mode-hook (lambda ()
+  ;; (elpy-enable)))
+  ;; ;; Set Ipython's envoirment
+  ;; ;; (setq python-shell-interpreter "jupyter"
+  ;; ;; python-shell-interpreter-args "console --simple-prompt"
+  ;; ;; python-shell-prompt-detect-failure-warning nil)
+  ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;; "jupyter")
+  ;; (elpy-enable))
+)
 #+END_SRC
 
 #+RESULTS:
@@ -48,18 +48,26 @@ Elpy is a package that renders Emacs almost a Python IDE.
 The initial buffer.
 #+BEGIN_SRC emacs-lisp
 (use-package dashboard
+:ensure t
 :config
 (setq dashboard-banner-logo-title "Welcome back, Nicolò")
 (setq dashboard-center-content t)
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
-(setq dashboard-set-footer nil))
-;dashboard-setup-startup-hook))
+(setq dashboard-set-footer nil)
+(dashboard-setup-startup-hook))
 #+END_SRC
 
 #+RESULTS:
 : t
+*** Page break lines
 
+#+BEGIN_SRC
+(use-package page-break-lines
+:ensure t
+:config
+(turn-on-page-break-lines-mode))
+#+END_SRC
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
@@ -192,6 +200,19 @@ I often use eshell, this keybinding is just to call it quickly.
 #+RESULTS:
 : eshell
 
+** Anaconda Mode
+Code navigation, documentation lookup and completion for Python.
+[[https://github.com/pythonic-emacs/anaconda-mode][Anaconda mode github repo]]
+#+BEGIN_SRC emacs-lisp
+(use-package anaconda-mode
+:ensure t
+:config
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+#+END_SRC
+
+#+RESULTS:
+: t
+
 * Visual settings
 ** Hide the menubar
 #+BEGIN_SRC emacs-lisp
@@ -280,4 +301,13 @@ On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
+#+END_SRC
+* Misc
+
+#+BEGIN_SRC emacs-lisp
+  ;; (defun dashboard-refresh-buffer ()
+  ;;   (when (get-buffer dashboard-buffer-name)
+  ;;     (kill-buffer dashboard-buffer-name))
+  ;;   (dashboard-insert-startupify-lists)
+  ;;   (switch-to-buffer dashboard-buffer-name))
 #+END_SRC

@@ -5,19 +5,21 @@
 (package-install 'use-package)
 
 (use-package elpy
-:config
-;; Hook to start elpy when in python mode (visiting a python file or buffer)
-(add-hook 'python-mode-hook (lambda ()
-(elpy-enable)))
-;; Set Ipython's envoirment
-;; (setq python-shell-interpreter "jupyter"
-;; python-shell-interpreter-args "console --simple-prompt"
-;; python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-"jupyter")
-(elpy-enable))
+  ;; :config
+  ;; ;; Hook to start elpy when in python mode (visiting a python file or buffer)
+  ;; (add-hook 'python-mode-hook (lambda ()
+  ;; (elpy-enable)))
+  ;; ;; Set Ipython's envoirment
+  ;; ;; (setq python-shell-interpreter "jupyter"
+  ;; ;; python-shell-interpreter-args "console --simple-prompt"
+  ;; ;; python-shell-prompt-detect-failure-warning nil)
+  ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;; "jupyter")
+  ;; (elpy-enable))
+)
 
 (use-package dashboard
+:ensure t
 :config
 (setq dashboard-banner-logo-title "Welcome back, Nicolò")
 (setq dashboard-center-content t)
@@ -95,6 +97,11 @@
 
 (global-set-key (kbd "C-x C-e") 'eshell)
 
+(use-package anaconda-mode
+:ensure t
+:config
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+
 (menu-bar-mode 0)
 
 (tool-bar-mode 0)
@@ -119,3 +126,9 @@
 
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
+
+;; (defun dashboard-refresh-buffer ()
+;;   (when (get-buffer dashboard-buffer-name)
+;;     (kill-buffer dashboard-buffer-name))
+;;   (dashboard-insert-startupify-lists)
+;;   (switch-to-buffer dashboard-buffer-name))

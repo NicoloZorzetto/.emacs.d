@@ -10,7 +10,7 @@
  '(org-agenda-file-regexp "~/Documents/org/")
  '(org-agenda-files '("~/Documents/org/agenda.org"))
  '(package-selected-packages
-   '(minimal-theme monochrome-theme eink-theme dark-mint-theme latex-preview-pane lsp-latex package-lint flycheck poet-theme elegant-emacs company-mode nil markdown-mode jupyter ewal-spacemacs-themes pdf-tools emms spacemacs-themes spacemacs-theme gruvbox-theme material-theme writeroom-mode gnuplot gnuplot-mode gunplot-mode gunplot xwidget xwidgete counsel swiper ivy request org-gcal magit all-the-icons dashboard elpy modus-vivendi-theme use-package)))
+   '(spaceline-all-the-icons undo-tree anaconda-mode minimal-theme monochrome-theme eink-theme dark-mint-theme latex-preview-pane lsp-latex package-lint flycheck poet-theme elegant-emacs company-mode nil markdown-mode jupyter ewal-spacemacs-themes pdf-tools emms spacemacs-themes spacemacs-theme gruvbox-theme material-theme writeroom-mode gnuplot gnuplot-mode gunplot-mode gunplot xwidget xwidgete counsel swiper ivy request org-gcal magit all-the-icons elpy modus-vivendi-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

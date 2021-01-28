@@ -47,15 +47,15 @@ Elpy is a package that renders Emacs almost a Python IDE.
 ** Dashboard
 The initial buffer.
 #+BEGIN_SRC emacs-lisp
-(use-package dashboard
-:ensure t
-:config
-(setq dashboard-banner-logo-title "Welcome back, Nicolò")
-(setq dashboard-center-content t)
-(setq dashboard-set-heading-icons t)
-(setq dashboard-set-file-icons t)
-(setq dashboard-set-footer nil)
-(dashboard-setup-startup-hook))
+  ;; (use-package dashboard
+  ;; :ensure t
+  ;; :config
+  ;; (setq dashboard-banner-logo-title "Welcome back, Nicolò")
+  ;; (setq dashboard-center-content t)
+  ;; (setq dashboard-set-heading-icons t)
+  ;; (setq dashboard-set-file-icons t)
+  ;; (setq dashboard-set-footer nil)
+  ;; (dashboard-setup-startup-hook))
 #+END_SRC
 
 #+RESULTS:
@@ -191,28 +191,6 @@ EMMS is a super minimalistic music player inside emacs. It is standardly launche
 
 #+RESULTS:
 : t
-** Eshell
-I often use eshell, this keybinding is just to call it quickly.
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x C-e") 'eshell)
-#+END_SRC 
-
-#+RESULTS:
-: eshell
-
-** Anaconda Mode
-Code navigation, documentation lookup and completion for Python.
-[[https://github.com/pythonic-emacs/anaconda-mode][Anaconda mode github repo]]
-#+BEGIN_SRC emacs-lisp
-(use-package anaconda-mode
-:ensure t
-:config
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode))
-#+END_SRC
-
-#+RESULTS:
-: t
-
 * Visual settings
 ** Hide the menubar
 #+BEGIN_SRC emacs-lisp
@@ -311,3 +289,25 @@ On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'
   ;;   (dashboard-insert-startupify-lists)
   ;;   (switch-to-buffer dashboard-buffer-name))
 #+END_SRC
+
+#+RESULTS:
+: t
+** Set backup files directory to /temp/
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist
+`((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+`((".*" ,temporary-file-directory t)))
+#+END_SRC
+
+#+RESULTS:
+| .* | /tmp/ | t |
+** Tab setup
+
+#+BEGIN_SRC emacs-lisp
+(setq tab-width 4)
+(setq indent-tabs-mode t)
+#+END_SRC
+
+#+RESULTS:
+: t

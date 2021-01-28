@@ -1,4 +1,4 @@
-% Created 2020-07-19 Sun 14:10
+% Created 2021-01-27 mer 20:20
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -22,7 +22,7 @@
  pdftitle={Emacs Config},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
  pdflang={English}}
 \begin{document}
 
@@ -32,134 +32,275 @@
 :tangle yes
 
 \section{Packages}
-\label{sec:orgd4c3b42}
-\subsection{Initialize}
-\label{sec:org3572826}
+\label{sec:orgc1ecc4d}
+\subsection{Add reos and initialize.}
+\label{sec:orgbde2437}
+Adding these 2 repos seems to solve package-install problems in MacOS. Maybe it's only me, but leaving them will not cause problems nor slow down the startup by a lot.
+Melpa is the default one and adding the gnu repo is a bit unorthodox but in Fedora just the first didn't list all packages available so I had to add the latter.
 \begin{verbatim}
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			 ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 \end{verbatim}
-\subsection{Use-package}
-\label{sec:orgfbd9af5}
+
+\subsection{Use package}
+\label{sec:orgdcadca0}
+The use-package macro allows you to isolate package configuration in your .emacs file in a way that is both performance-oriented and, well, tidy. I created it because I have over 80 packages that I use in Emacs, and things were getting difficult to manage. Yet with this utility my total load time is around 2 seconds, with no loss of functionality!
 \begin{verbatim}
 (package-install 'use-package)
 \end{verbatim}
 
-\subsection{All-the-icons}
-\label{sec:org5ab706d}
-Icons package used for the dashboard and maybe something else in the future.
-\begin{verbatim}
-(package-install 'all-the-icons)
-\end{verbatim}
-
 \subsection{Elpy}
-\label{sec:org15200bb}
+\label{sec:orgdd6872d}
 Elpy is a package that renders Emacs almost a Python IDE.
 \begin{verbatim}
-(package-install 'elpy)
-(require 'elpy)
-\end{verbatim}
-\subsubsection{Jupyter's envoirment}
-\label{sec:orgafcff84}
-I use Jupyter's live envoirment even inside Emacs because I find it easier to navigate especially when trying to produce literate code.
-\begin{verbatim}
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-	     "jupyter")
+  (use-package elpy
+  ;; :config
+  ;; ;; Hook to start elpy when in python mode (visiting a python file or buffer)
+  ;; (add-hook 'python-mode-hook (lambda ()
+  ;; (elpy-enable)))
+  ;; ;; Set Ipython's envoirment
+  ;; ;; (setq python-shell-interpreter "jupyter"
+  ;; ;; python-shell-interpreter-args "console --simple-prompt"
+  ;; ;; python-shell-prompt-detect-failure-warning nil)
+  ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+  ;; "jupyter")
+  ;; (elpy-enable))
+)
 \end{verbatim}
 
 \subsection{Dashboard}
-\label{sec:orgc7160e0}
+\label{sec:orgdce6821}
 The initial buffer.
 \begin{verbatim}
-(package-install 'dashboard)
-
-(dashboard-setup-startup-hook)
-(setq dashboard-banner-logo-title "Welcome back Nicolò")
-;(setq dashboard-startup-banner [VALUE])
-(setq dashboard-center-content t)
-(setq dashboard-set-heading-icons t)
-(setq dashboard-set-file-icons t)
-(setq dashboard-set-footer nil)
+;; (use-package dashboard
+;; :ensure t
+;; :config
+;; (setq dashboard-banner-logo-title "Welcome back, Nicolò")
+;; (setq dashboard-center-content t)
+;; (setq dashboard-set-heading-icons t)
+;; (setq dashboard-set-file-icons t)
+;; (setq dashboard-set-footer nil)
+;; (dashboard-setup-startup-hook))
 \end{verbatim}
+\subsubsection{Page break lines}
+\label{sec:orge4045a6}
 
+\begin{verbatim}
+(use-package page-break-lines
+:ensure t
+:config
+(turn-on-page-break-lines-mode))
+\end{verbatim}
 \subsection{Magit}
-\label{sec:orgf881195}
-Git client inside emacs.
+\label{sec:orgd48d6ed}
+
 \begin{verbatim}
-(package-install 'magit)
+(use-package magit
+:config
+(global-set-key (kbd "C-g") 'magit))
 \end{verbatim}
 
-\section{Visual settings}
-\label{sec:org6fc5b8d}
-\subsection{Show line numbers}
-\label{sec:org612d549}
-I like to see line numbers
+\subsection{Ivy}
+\label{sec:org4e4f5fd}
+\subsubsection{Ivy}
+\label{sec:org0460c3d}
+Ivy is an interactive interface for completion in Emacs. Emacs uses completion mechanism in a variety of contexts: code, menus, commands, variables, functions, etc. Completion entails listing, sorting, filtering, previewing, and applying actions on selected items. When active, ivy-mode completes the selection process by narrowing available choices while previewing in the minibuffer. Selecting the final candidate is either through simple keyboard character inputs or through powerful regular expressions.
+\href{https://github.com/Microsoft/ivy}{Ivy github repo]
+[[https://oremacs.com/swiper/][Ivy official documentation}
 \begin{verbatim}
-(global-display-line-numbers-mode)
+(use-package ivy
+:config
+;; This allows minibuffer commands while inside the minibuffer. I believe my Ivy settings use it quite a bit.
+(setq enable-recursive-minibuffers t)
+;; This adds bookmarks and recent files to 'ivy-switch-buffer'. This adds a bit of initial load time but is pretty useful in my opinion.
+(setq ivy-use-virtual-buffers t)
+;; Counsel-minibuffer-history will show the minibuffer commands history. The keybinding only works when inside the minibuffer.
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+;; Consel-M-x is Ivy's version of 'execute-extended-command'. 
+(global-set-key (kbd "M-x") 'counsel-M-x)
+;; Counsel-find-file add Ivy completion to find-file.
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;; Consel-find-library opens the minibuffer listing all available libraries (often associated with packages) and lets you search and select one opening it's source code.
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+;; Consel-describe-function opens the minibuffer listing all available functions and opens the documentation page for the one you select.
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+;; Consel-describe-variable opens the minibuffer listing all available variables and opens the documentation page for the one you select.
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+;; Consel-describe-symbol opens the minibuffer listing all available symbols and opens the documentation page for the one you select.
+(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+;; Ivy-resume allows you to get back where you left the last ivy completion.
+(global-set-key (kbd "<f6>") 'ivy-resume)
+:init
+;; This activates Ivy
+(ivy-mode 1))
+\end{verbatim}
+
+\subsubsection{Counsel}
+\label{sec:org86f90c1}
+Consuel is a collection of Ivy enhanced emacs commands.
+\href{https://github.com/Microsoft/ivy}{Ivy github repo}
+\href{https://oremacs.com/swiper/}{Ivy official documentation}
+\begin{verbatim}
+(package-install 'counsel)
+\end{verbatim}
+
+\subsubsection{Swiper}
+\label{sec:org50c6d66}
+Swiper is an an Ivy enhanced Isearch replacement.
+\href{https://github.com/Microsoft/ivy}{Ivy github repo}
+\href{https://oremacs.com/swiper/}{Ivy official documentation}
+\begin{verbatim}
+(use-package swiper
+:config
+(global-set-key (kbd "C-s") 'swiper))
+\end{verbatim}
+\subsection{Writeromm}
+\label{sec:org5343520}
+I have long wanted a sort of 'zen-mode' for emacs to integrate in my workflow so to have a super minimal and distraction free envoirment to relax while writing or sometimes coding.
+writeroom-mode adds just that to Emacs, emulating the famous OSX editor of the same name. It is not perfect but I believe I can make it more so thru configuration and hooks.
+The repo doesn't appear to be the original but seems to still get updates since the other's last commit is from 2015.
+\href{https://github.com/joostkremers/writeroom-mode}{Writeroom-mode github repo}
+\subsubsection{Installation}
+\label{sec:orge4a5a54}
+\begin{verbatim}
+(use-package writeroom-mode
+:config
+(global-set-key (kbd "C-x C-w") 'writeroom-mode))
+\end{verbatim}
+
+\subsection{PDF tools}
+\label{sec:org4647413}
+PDF-tools is a package that let's you view PDF files (and more) inside Emacs.
+Midnight mode actively changes the colors of PDFs to be homougenous with the theme you have loaded. 
+I added a hook to activate it automatically since I use pdf-tools mainly to read books or documents. If you need to see the original colors just disable it manually with < \emph{C-c C-r m} >.
+\begin{verbatim}
+(use-package pdf-tools
+:config
+(add-hook 'PDFView-mode-hook (lambda ()
+				(pdf-view-midnight-minor-mode)))
+(pdf-tools-install))
+\end{verbatim}
+
+\subsection{EMMS}
+\label{sec:orge1e41c8}
+EMMS is a super minimalistic music player inside emacs. It is standardly launched with the command < \emph{M-x RET emms RET} >.
+\begin{verbatim}
+(package-install 'emms)
+
+(use-package emms
+:config 
+;;Midnight mode actively changes the colors of PDFs to be homougenous with the theme you have loaded. I added a hook to activate it automatically since I use pdf-tools mainly to read books or documents. If you need to see the original colors just disable it manually with < /C-c C-r m/ >.
+(global-set-key (kbd "C-c C-x C-e") 'emms)
+;; I have binded /add directory/ to < /C-c C-+/ >. This function opens the minubuffer prompting for a directory and add to emms all music files contained in it.
+(global-set-key (kbd "C-c C-+") 'emms-add-directory)
+;; Player config
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(add-to-list 'load-path "~/.emacs.d/site-lisp/emms/lisp")
+(require 'emms-setup)
+(require 'emms-player-mplayer)
+(emms-standard)
+(emms-default-players)
+(define-emms-simple-player mplayer '(file url)
+      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+		    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+		    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+      "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen"))
+\end{verbatim}
+\section{Visual settings}
+\label{sec:org7ff4c18}
+\subsection{Hide the menubar}
+\label{sec:org6b3dfb9}
+\begin{verbatim}
+(menu-bar-mode 0)
+\end{verbatim}
+
+\subsection{Hide the toolbar}
+\label{sec:org5581913}
+\begin{verbatim}
+(tool-bar-mode 0)
+\end{verbatim}
+
+\subsection{Show line numbers (kbd toggle)}
+\label{sec:org5a5afc6}
+Line numbers are not shown by default so I added a toggle keybinding to show/hide them with < \emph{C-x C-l} >
+\begin{verbatim}
+(global-set-key (kbd "C-x C-l") 'global-display-line-numbers-mode)
 \end{verbatim}
 
 \subsection{Visual line mode}
-\label{sec:org8e980aa}
-I use visual line mode because this way actions on lines act on visual ones instead of logical ones, making it perfect for line wrapping.
+\label{sec:org469a493}
+Visual line mode makes line-dependent commands act on visual lines instead of logical ones (so separating wrapped lines). 
 \begin{verbatim}
 (global-visual-line-mode 1)
 \end{verbatim}
 
-\subsection{[theme] modus-vivendi}
-\label{sec:org8d7971b}
+\subsection{[theme] spacemacs-dark}
+\label{sec:org868567c}
+Simple and pretty minimal theme that works well with my DWM config.
 \begin{verbatim}
-(package-install 'modus-vivendi-theme)
-(load-theme 'modus-vivendi t)
-\end{verbatim}
-
-\subsection{[theme] zemacs-galileo}
-\label{sec:org158a48a}
-\begin{verbatim}
-; (load-file "~/.emacs.d/zemacs/zemacs-galileo-theme.el")
+(load-theme 'poet-dark t)
 \end{verbatim}
 
 \section{Org-mode settings}
-\label{sec:org73353b0}
+\label{sec:org07508a5}
 \subsection{Agenda settings}
-\label{sec:org3751bb8}
+\label{sec:org597b0dc}
 \subsubsection{Set agenda files}
-\label{sec:org953e317}
+\label{sec:orgfd3857c}
 \begin{verbatim}
-(setq org-agenda-files (list "~/Documents/org/Agenda/agenda.org"))
+(require 'org)
+(setq org-agenda-files (list "~/Documents/org/agenda.org"))
 \end{verbatim}
+
+\subsubsection{Agenda KBD}
+\label{sec:org36672bf}
+\begin{verbatim}
+(global-set-key (kbd "C-x C-a") 'org-agenda)
+\end{verbatim}
+
 \section{Keybindings specific to Italian Keyboards}
-\label{sec:orgd8270e5}
+\label{sec:org4c55aa7}
 Using the Italian keyboard layout and emacs can be troublesome. 
 In GNU/Linux systems these are taken care of by default, with the exception of the tidle ("\textasciitilde{}"),  but in MacOS and Windows(?) they are noy. 
 Leaving these even if you run GNU/Linux should not cause any problem or warning.
 If you use another layout simply put your curson on the "* Keybindings specific to Italian Keyboards" line and press "C-c C-x C-w" to delete the whole entry. This also works with any entry in any org-document.
 \href{https://www.gnu.org/software/emacs/manual/html\_node/elisp/Key-Binding-Commands.html}{Manual article on keybindings}
 \subsection{Insert "\textasciitilde{}"}
-\label{sec:org14ade60}
-On italian keyboards the tidle ("\textasciitilde{}") is inserted with Alt+5. This command makes it possible to do so.
+\label{sec:org34c17c1}
+On italian keyboards the tidle ("\textasciitilde{}") is inserted with 'Alt+5'. This command makes it possible to do so.
 \begin{verbatim}
 (global-set-key (kbd "M-5") "~")
 \end{verbatim}
 \subsection{Insert "\#"}
-\label{sec:orga858cd0}
-On italian keyboards the pound sign, also called octothorpe or hashtag, ("\#") is inserted with Alt+à. This command makes it possible to do so.
+\label{sec:org11cb40a}
+On italian keyboards the pound sign, also called octothorpe or hashtag, ("\#") is inserted with 'Alt+à'. This command makes it possible to do so.
 \begin{verbatim}
 (global-set-key (kbd "M-à") "#")
 \end{verbatim}
 \subsection{Insert "[" and "]"}
-\label{sec:org4a5dbec}
-On italian keyboards the square parentheses are inserted with Alt+è or Alt++. This command makes it possible to do so.
+\label{sec:orgb3ef9e5}
+On italian keyboards the square parentheses are inserted with 'Alt+è' or 'Alt++'. This command makes it possible to do so.
 \begin{verbatim}
 (global-set-key (kbd "M-è") "[")
 (global-set-key (kbd "M-+") "]")
 \end{verbatim}
 \subsection{Insert "\{" and "\}"}
-\label{sec:org1eda247}
-On italian keyboards the curly parentheses are inserted with Alt+é or Alt+*. This command makes it possible to do so.
+\label{sec:org02740f1}
+On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'. This command makes it possible to do so.
 \begin{verbatim}
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
+\end{verbatim}
+\section{Misc}
+\label{sec:orgbbe5b00}
+
+\begin{verbatim}
+  ;; (defun dashboard-refresh-buffer ()
+  ;;   (when (get-buffer dashboard-buffer-name)
+  ;;     (kill-buffer dashboard-buffer-name))
+  ;;   (dashboard-insert-startupify-lists)
+  ;;   (switch-to-buffer dashboard-buffer-name))
+(load-file "~/.emacs.d/elegant-emacs/elegance.el")
 \end{verbatim}
 \end{document}

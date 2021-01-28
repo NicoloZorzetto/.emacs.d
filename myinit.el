@@ -18,15 +18,15 @@
   ;; (elpy-enable))
 )
 
-(use-package dashboard
-:ensure t
-:config
-(setq dashboard-banner-logo-title "Welcome back, Nicolò")
-(setq dashboard-center-content t)
-(setq dashboard-set-heading-icons t)
-(setq dashboard-set-file-icons t)
-(setq dashboard-set-footer nil)
-(dashboard-setup-startup-hook))
+;; (use-package dashboard
+;; :ensure t
+;; :config
+;; (setq dashboard-banner-logo-title "Welcome back, Nicolò")
+;; (setq dashboard-center-content t)
+;; (setq dashboard-set-heading-icons t)
+;; (setq dashboard-set-file-icons t)
+;; (setq dashboard-set-footer nil)
+;; (dashboard-setup-startup-hook))
 
 (use-package magit
 :config
@@ -95,13 +95,6 @@
                     ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
       "mplayer" "-slave" "-quiet" "-really-quiet" "-fullscreen"))
 
-(global-set-key (kbd "C-x C-e") 'eshell)
-
-(use-package anaconda-mode
-:ensure t
-:config
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode))
-
 (menu-bar-mode 0)
 
 (tool-bar-mode 0)
@@ -132,3 +125,11 @@
 ;;     (kill-buffer dashboard-buffer-name))
 ;;   (dashboard-insert-startupify-lists)
 ;;   (switch-to-buffer dashboard-buffer-name))
+
+(setq backup-directory-alist
+`((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+`((".*" ,temporary-file-directory t)))
+
+(setq tab-width 4)
+(setq indent-tabs-mode t)

@@ -1,5 +1,7 @@
 ((magit-commit
   ("--all"))
+ (magit-pull nil
+	     ("--rebase"))
  (magit-push
   ("--force-with-lease")
   ("--force")

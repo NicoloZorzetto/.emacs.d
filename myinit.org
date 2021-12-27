@@ -280,6 +280,14 @@ On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
 #+END_SRC
+** Insert "@"
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-ò") "@")
+#+END_SRC
+
+#+RESULTS:
+: @
+
 * Misc
 
 #+BEGIN_SRC emacs-lisp
@@ -311,3 +319,15 @@ On italian keyboards the curly parentheses are inserted with 'Alt+é' or 'Alt+*'
 
 #+RESULTS:
 : t
+*** Python
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'python-mode-hook
+  (lambda ()
+    (setq indent-tabs-mode t)
+    (setq python-indent-offset 8)
+    (setq tab-width 4)))
+#+END_SRC
+
+#+RESULTS:
+| lambda | nil | (setq indent-tabs-mode t) | (setq python-indent 8) | (setq tab-width 4) |

@@ -120,6 +120,8 @@
 (global-set-key (kbd "M-é") "{")
 (global-set-key (kbd "M-*") "}")
 
+(global-set-key (kbd "M-ò") "@")
+
 ;; (defun dashboard-refresh-buffer ()
 ;;   (when (get-buffer dashboard-buffer-name)
 ;;     (kill-buffer dashboard-buffer-name))
@@ -133,3 +135,9 @@
 
 (setq tab-width 4)
 (setq indent-tabs-mode t)
+
+(add-hook 'python-mode-hook
+  (lambda ()
+    (setq indent-tabs-mode t)
+    (setq python-indent-offset 8)
+    (setq tab-width 4)))
